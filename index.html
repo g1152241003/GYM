@@ -1,0 +1,3049 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GYM GUIDE TAIWAN 台灣各大連鎖健身房全攻略｜健身工廠・World Gym・成吉思汗・Anytime Fitness</title>
+    <!-- 引入 Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入 Google Fonts: Noto Sans TC 與 Montserrat 展現俐落運動感 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Montserrat:ital,wght@0,700;0,900;1,800;1,900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <!-- 引入 Font Awesome 圖示 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', '"Inter"', 'sans-serif'],
+                        display: ['"Montserrat"', '"Noto Sans TC"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#F7D002',
+                            bright: '#FFE600',
+                            gold: '#D4AF37',
+                            dark: '#111111',
+                            charcoal: '#1E1E1E',
+                            gray: '#F4F4F6'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* 自訂斜切與動態裝飾樣式 */
+        .skew-text {
+            transform: skewX(-12deg);
+        }
+        .unskew-text {
+            transform: skewX(12deg);
+        }
+        .clip-banner-dark {
+            clip-path: polygon(4% 0%, 100% 0%, 96% 100%, 0% 100%);
+        }
+        .clip-banner-yellow {
+            clip-path: polygon(3% 0%, 100% 0%, 97% 100%, 0% 100%);
+        }
+        .clip-tag {
+            clip-path: polygon(0 0, 96% 0, 100% 100%, 0% 100%);
+        }
+        /* 文字描邊與陰影增強可讀性 */
+        .hero-title-shadow {
+            text-shadow: 0 8px 28px rgba(0, 0, 0, 0.75);
+        }
+        /* 隱藏捲軸但保留滾動功能 */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        @keyframes pulseSlide {
+            0%, 100% { transform: translateX(0); opacity: 0.5; }
+            50% { transform: translateX(4px); opacity: 1; }
+        }
+        .animate-arrow-right {
+            animation: pulseSlide 1.4s infinite ease-in-out;
+        }
+        @keyframes pulseSlideLeft {
+            0%, 100% { transform: translateX(0); opacity: 0.5; }
+            50% { transform: translateX(-4px); opacity: 1; }
+        }
+        .animate-arrow-left {
+            animation: pulseSlideLeft 1.4s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-white text-brand-dark font-sans antialiased overflow-x-hidden selection:bg-brand-yellow selection:text-brand-dark">
+
+    <!-- 全局提示訊息 Toast (取代 alert) -->
+    <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+    <!-- 1. 頂部導覽列 (Header - 延續截圖白底極簡配置) -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all">
+        <div class="max-w-[1440px] mx-auto px-4 sm:px-8 h-16 sm:h-20 flex items-center justify-between">
+            
+            <!-- 左側功能與連結 -->
+            <div class="flex items-center space-x-3 lg:space-x-6">
+                <div class="flex items-center space-x-2 text-gray-700">
+                    <button onclick="toggleSearchBar()" class="p-2 hover:text-brand-dark hover:bg-gray-100 rounded-full transition" title="搜尋健身房品牌或特色">
+                        <i class="fa-solid fa-magnifying-glass text-base"></i>
+                    </button>
+                </div>
+                <span class="hidden sm:inline-block h-4 w-[1px] bg-gray-300"></span>
+                <nav class="hidden md:flex items-center space-x-6 text-sm font-bold tracking-wide text-gray-800">
+                    <a href="#brands-directory" class="hover:text-amber-500 transition">四大品牌總覽</a>
+                    <a href="#brand-comparison-table" class="hover:text-amber-500 transition">費用與特色比較</a>
+                    <a href="#bmi-calculator-section" class="hover:text-amber-500 transition flex items-center gap-1">
+                        <i class="fa-solid fa-weight-scale text-amber-500 text-xs"></i>
+                        <span>BMI 測量</span>
+                    </a>
+                    <a href="#scratch-card-section" class="hover:text-amber-500 transition flex items-center gap-1 text-rose-600">
+                        <i class="fa-solid fa-ticket text-rose-500 text-xs"></i>
+                        <span>新用戶刮刮樂</span>
+                    </a>
+                    <a href="#gym-roulette-section" class="hover:text-amber-500 transition">健身轉盤</a>
+                    <a href="#share-review-section" class="hover:text-amber-500 transition">分享評論</a>
+                    <a href="#maintainer-ai-section" class="flex items-center gap-1 text-emerald-700 hover:text-amber-600 transition">
+                        <i class="fa-solid fa-robot text-xs"></i>
+                        <span>AI新增場館</span>
+                    </a>
+                    <button onclick="openBookingModal('各家健身房免費體驗預約')" class="flex items-center gap-1.5 hover:text-amber-500 transition">
+                        <i class="fa-regular fa-calendar-check text-amber-500"></i>
+                        <span>預約免費體驗</span>
+                    </button>
+                </nav>
+            </div>
+
+            <!-- 中間品牌標誌 (台灣健身房指南 GYM GUIDE TAIWAN) -->
+            <a href="#" class="flex items-center gap-2.5 group">
+                <div class="relative w-9 h-7 sm:w-11 sm:h-8 flex items-center justify-center">
+                    <svg viewBox="0 0 64 44" class="w-full h-full drop-shadow-sm group-hover:scale-105 transition-transform">
+                        <polygon points="10,4 58,4 54,12 18,12 15,18 48,18 44,26 11,26 4,40 0,40" fill="#F7D002"/>
+                        <polygon points="24,30 56,30 52,38 20,38" fill="#111111"/>
+                    </svg>
+                </div>
+                <div class="flex flex-col leading-none">
+                    <span class="font-black text-base sm:text-lg tracking-tight text-brand-dark">台灣健身房指南</span>
+                    <span class="font-display font-black italic text-[10px] sm:text-xs tracking-wider text-gray-500 mt-0.5">GYM GUIDE TAIWAN</span>
+                </div>
+            </a>
+
+            <!-- 右側連結與亮黃色圓形漢堡選單 -->
+            <div class="flex items-center space-x-3 lg:space-x-6">
+                <nav class="hidden lg:flex items-center space-x-6 text-sm font-bold tracking-wide text-gray-800">
+                    <a href="#gym-quiz-section" class="hover:text-amber-500 transition flex items-center gap-1">
+                        <i class="fa-solid fa-wand-magic-sparkles text-amber-500 text-xs"></i>
+                        <span>適合度測驗</span>
+                    </a>
+                    <a href="#hero-cards-row" class="hover:text-amber-500 transition">各大官網直達</a>
+                </nav>
+                <!-- 亮黃色圓形漢堡選單按鈕 -->
+                <button onclick="toggleDrawer()" aria-label="開啟主選單" class="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-brand-yellow hover:bg-brand-bright active:scale-95 transition flex flex-col items-center justify-center gap-1.5 shadow-md cursor-pointer">
+                    <span class="w-4 sm:w-5 h-0.5 bg-brand-dark rounded-full"></span>
+                    <span class="w-4 sm:w-5 h-0.5 bg-brand-dark rounded-full"></span>
+                    <span class="w-3 sm:w-4 h-0.5 bg-brand-dark rounded-full self-end mr-3"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- 展開式快速搜尋列 -->
+        <div id="quick-search-bar" class="hidden bg-gray-50 border-t border-gray-200 px-4 py-3">
+            <div class="max-w-3xl mx-auto flex items-center gap-2">
+                <i class="fa-solid fa-magnifying-glass text-gray-400"></i>
+                <input type="text" id="global-search-input" onkeyup="searchBrandsRealtime()" placeholder="輸入關鍵字篩選品牌（例如：泳池、24小時、格鬥、透明月費、健身工廠、World Gym）..." class="w-full bg-transparent text-sm focus:outline-none text-brand-dark font-medium">
+                <button onclick="toggleSearchBar()" class="text-xs text-gray-500 hover:text-brand-dark px-2 py-1">關閉</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 側邊抽屜選單 (Side Drawer) -->
+    <div id="drawer-backdrop" onclick="toggleDrawer()" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 hidden opacity-0 transition-opacity duration-300"></div>
+    <aside id="side-drawer" class="fixed top-0 right-0 h-full w-80 sm:w-96 bg-brand-dark text-white z-50 transform translate-x-full transition-transform duration-300 flex flex-col justify-between p-6 sm:p-8 shadow-2xl overflow-y-auto">
+        <div>
+            <div class="flex items-center justify-between pb-6 border-b border-white/10">
+                <div class="flex items-center gap-2">
+                    <span class="w-3 h-6 bg-brand-yellow skew-text inline-block"></span>
+                    <span class="font-display font-black italic text-lg tracking-wider">GYM GUIDE TAIWAN</span>
+                </div>
+                <button onclick="toggleDrawer()" class="w-9 h-9 rounded-full bg-white/10 hover:bg-brand-yellow hover:text-brand-dark flex items-center justify-center transition">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <div class="mt-6 space-y-1.5">
+                <p class="text-xs font-bold tracking-widest text-brand-yellow uppercase mb-3">四大代表連鎖品牌直達</p>
+                <a href="https://www.fitnessfactory.com.tw/tw" target="_blank" rel="noopener noreferrer" class="py-2.5 px-3 rounded-lg hover:bg-white/10 font-bold text-sm transition flex items-center justify-between">
+                    <span>1. 健身工廠 Fitness Factory</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-xs text-brand-yellow"></i>
+                </a>
+                <a href="https://www.worldgymtaiwan.com" target="_blank" rel="noopener noreferrer" class="py-2.5 px-3 rounded-lg hover:bg-white/10 font-bold text-sm transition flex items-center justify-between">
+                    <span>2. World Gym 世界健身俱樂部</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-xs text-red-400"></i>
+                </a>
+                <a href="https://www.gk-fitness.com.tw" target="_blank" rel="noopener noreferrer" class="py-2.5 px-3 rounded-lg hover:bg-white/10 font-bold text-sm transition flex items-center justify-between">
+                    <span>3. 成吉思汗健身俱樂部</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-xs text-amber-400"></i>
+                </a>
+                <a href="https://www.anytimefitness.com.tw" target="_blank" rel="noopener noreferrer" class="py-2.5 px-3 rounded-lg hover:bg-white/10 font-bold text-sm transition flex items-center justify-between">
+                    <span>4. Anytime Fitness 24H</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-xs text-purple-400"></i>
+                </a>
+            </div>
+
+            <div class="mt-6 pt-6 border-t border-white/10 space-y-2">
+                <p class="text-xs font-bold tracking-widest text-gray-400 uppercase mb-2">頁面導覽</p>
+                <a href="#brands-directory" onclick="toggleDrawer()" class="block py-2 px-3 rounded-lg hover:bg-white/10 text-sm font-bold">各家健身房深度介紹</a>
+                <a href="#brand-comparison-table" onclick="toggleDrawer()" class="block py-2 px-3 rounded-lg hover:bg-white/10 text-sm font-bold">四大品牌全方位比較表</a>
+                <a href="#bmi-calculator-section" onclick="toggleDrawer()" class="block py-2 px-3 rounded-lg hover:bg-white/10 text-sm font-bold text-sky-300">BMI 體態測量與訓練建議</a>
+                <a href="#scratch-card-section" onclick="toggleDrawer()" class="block py-2 px-3 rounded-lg hover:bg-white/10 text-sm font-bold text-rose-300">新用戶刮刮樂（刮出折價券）</a>
+                <a href="#gym-roulette-section" onclick="toggleDrawer()" class="block py-2 px-3 rounded-lg hover:bg-white/10 text-sm font-bold text-amber-400">健身轉盤（隨機幫你選）</a>
+                <a href="#gym-quiz-section" onclick="toggleDrawer()" class="block py-2 px-3 rounded-lg hover:bg-white/10 text-sm font-bold">適合我的健身房小測驗</a>
+                <a href="#share-review-section" onclick="toggleDrawer()" class="block py-2 px-3 rounded-lg hover:bg-white/10 text-sm font-bold text-brand-yellow">分享評論與會員心得</a>
+                <a href="#maintainer-ai-section" onclick="toggleDrawer()" class="block py-2 px-3 rounded-lg bg-emerald-500/20 border border-emerald-400/40 hover:bg-emerald-500/30 text-sm font-black text-emerald-300">
+                    <i class="fa-solid fa-wand-magic-sparkles mr-1.5"></i>維護者專區：AI 自動新增健身房
+                </a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- 2. 主視覺區塊 (Hero Section - 延續截圖斜切運動速度感與多欄快覽卡設計) -->
+    <section class="relative w-full min-h-[780px] lg:min-h-[840px] bg-brand-dark overflow-hidden flex flex-col justify-between">
+        <!-- 動態背景圖片與深色漸層遮罩 -->
+        <div class="absolute inset-0 z-0">
+            <img
+                id="hero-bg-image"
+                src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1920&q=85"
+                onerror="this.onerror=null; this.src='https://placehold.co/1920x1080/111111/F7D002?text=GYM+GUIDE+TAIWAN'"
+                alt="健身房訓練環境背景"
+                class="w-full h-full object-cover object-center opacity-50 transition-all duration-500"
+            >
+            <div class="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/75 to-brand-dark/40"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-black/40"></div>
+        </div>
+
+        <!-- 主視覺上半部：左側品牌即時切換與焦點卡 + 右側斜切雙色標語 -->
+        <div class="relative z-10 max-w-[1440px] w-full mx-auto px-4 sm:px-8 pt-10 sm:pt-14 pb-8 flex-1 flex flex-col justify-center">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+                
+                <!-- 左側：品牌即時預覽切換器與焦點卡片 (佔 6 欄) -->
+                <div class="lg:col-span-6 space-y-5">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-brand-yellow text-brand-dark font-black text-xs tracking-wider skew-text shadow">
+                        <span class="inline-block unskew-text">TAIWAN CHAIN GYM DIRECTORY</span>
+                    </div>
+
+                    <!-- 品牌快速切換按鈕列 -->
+                    <div id="hero-brand-switcher" class="flex flex-wrap gap-2">
+                        <!-- 由 JS renderHeroSwitcherButtons() 動態渲染 -->
+                    </div>
+
+                    <!-- 當前品牌焦點預覽盒 -->
+                    <div id="hero-brand-spotlight" class="bg-black/65 backdrop-blur-md border border-white/15 rounded-2xl p-6 sm:p-7 space-y-3 shadow-2xl">
+                        <!-- 由 JS switchHeroBrand() 動態填入 -->
+                    </div>
+                </div>
+
+                <!-- 右側：斜切雙色巨幅運動標語 (還原截圖右側「看健 更好的 自己」速度感排版) -->
+                <div class="lg:col-span-6 flex flex-col items-start lg:items-end justify-center select-none">
+                    <div class="relative space-y-1 sm:space-y-2 text-left lg:text-right">
+                        <div class="flex items-center lg:justify-end gap-3">
+                            <span class="h-1 w-12 sm:w-20 bg-brand-yellow skew-text inline-block"></span>
+                            <span class="font-display font-black italic text-xs sm:text-sm tracking-[0.25em] text-brand-yellow uppercase">FIND YOUR IDEAL GYM</span>
+                        </div>
+
+                        <h1 class="font-black italic tracking-tight leading-[1.02] hero-title-shadow">
+                            <span class="block text-5xl sm:text-7xl xl:text-8xl text-brand-yellow skew-text">選對</span>
+                            <span class="block text-5xl sm:text-7xl xl:text-8xl text-white skew-text mt-1 sm:mt-2">更好的</span>
+                            <span class="block text-5xl sm:text-7xl xl:text-8xl text-white skew-text mt-1 sm:mt-2">
+                                場館<span class="text-brand-yellow">.</span>
+                            </span>
+                        </h1>
+
+                        <p class="text-gray-300 text-xs sm:text-sm font-bold tracking-wide pt-3 max-w-md lg:ml-auto">
+                            一次比較健身工廠、World Gym、成吉思汗與 Anytime Fitness 24H，找到最符合預算與訓練目標的運動基地。
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 主視覺下半部：各家連鎖健身房核心快覽卡片列 -->
+        <div id="hero-cards-row" class="relative z-20 max-w-[1440px] w-full mx-auto px-4 sm:px-8 pb-6">
+            <div id="hero-cards-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+                <!-- 由 JS renderHeroQuickCards() 動態渲染 -->
+            </div>
+        </div>
+
+        <!-- 底部雙色斜切裝飾橫幅 -->
+        <div class="relative z-20 bg-white py-3.5 px-4 border-t border-gray-200">
+            <div class="max-w-[1440px] mx-auto flex items-center justify-center gap-3 sm:gap-5">
+                <div class="hidden sm:flex items-center gap-1 text-gray-400 text-xs">
+                    <i class="fa-solid fa-play animate-arrow-right"></i>
+                    <i class="fa-solid fa-play animate-arrow-right" style="animation-delay: 0.2s"></i>
+                    <i class="fa-solid fa-play animate-arrow-right" style="animation-delay: 0.4s"></i>
+                </div>
+                <div class="flex items-center">
+                    <span class="clip-banner-dark bg-brand-dark text-white font-black italic text-xs sm:text-sm px-5 sm:px-7 py-1.5 tracking-wider">
+                        全台熱門連鎖品牌
+                    </span>
+                    <span class="clip-banner-yellow bg-brand-yellow text-brand-dark font-display font-black italic text-xs sm:text-sm px-5 sm:px-7 py-1.5 -ml-2 tracking-wider">
+                        COMPARE &amp; EXPLORE
+                    </span>
+                </div>
+                <div class="hidden sm:flex items-center gap-1 text-gray-400 text-xs">
+                    <i class="fa-solid fa-play rotate-180 animate-arrow-left"></i>
+                    <i class="fa-solid fa-play rotate-180 animate-arrow-left" style="animation-delay: 0.2s"></i>
+                    <i class="fa-solid fa-play rotate-180 animate-arrow-left" style="animation-delay: 0.4s"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5-1. 新用戶專屬福利：「新用戶刮刮樂」折價券互動區塊 -->
+    <section id="scratch-card-section" class="py-16 sm:py-24 bg-gradient-to-b from-amber-50/70 via-white to-brand-gray border-t border-gray-200">
+        <div class="max-w-[1440px] mx-auto px-4 sm:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-12 space-y-2">
+                <span class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-rose-600 text-white font-black text-xs tracking-wider shadow-xs">
+                    <i class="fa-solid fa-gift"></i>
+                    <span>NEW MEMBER EXCLUSIVE・新用戶見面禮</span>
+                </span>
+                <h2 class="text-3xl sm:text-5xl font-black tracking-tight text-brand-dark pt-1">
+                    新用戶專屬刮刮樂
+                </h2>
+                <p class="text-xs sm:text-sm text-gray-600 font-medium">
+                    使用滑鼠或手指在下方銀色刮獎區來回塗抹，刮開超過 45% 即可領取四大連鎖健身房限量折價券！
+                </p>
+            </div>
+
+            <div class="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white rounded-3xl p-6 sm:p-10 border-2 border-amber-400/70 shadow-xl">
+                
+                <!-- 左側：Canvas 真實刮刮卡區 (佔 7 欄) -->
+                <div class="lg:col-span-7 flex flex-col items-center space-y-4">
+                    <div class="w-full flex items-center justify-between text-xs font-black text-gray-500 px-1">
+                        <span class="flex items-center gap-1.5 text-brand-dark">
+                            <i class="fa-solid fa-hand-pointer text-amber-500"></i>
+                            <span>請在卡片上按住滑鼠或手指刮開銀漆</span>
+                        </span>
+                        <span id="scratch-progress-text" class="px-2.5 py-0.5 rounded-full bg-gray-100 text-gray-700 font-display">
+                            已刮開 0%
+                        </span>
+                    </div>
+
+                    <!-- 刮刮卡本體外框 -->
+                    <div id="scratch-card-wrapper" class="relative w-full aspect-[16/9] max-w-[540px] rounded-2xl overflow-hidden shadow-2xl border-4 border-brand-dark select-none bg-brand-dark">
+                        <!-- 底層獎項內容（刮開後顯現） -->
+                        <div id="scratch-prize-layer" class="absolute inset-0 p-5 sm:p-7 flex flex-col justify-between bg-gradient-to-br from-brand-dark via-zinc-900 to-neutral-900 text-white">
+                            <div class="flex items-center justify-between gap-2">
+                                <span id="prize-badge" class="px-3 py-1 rounded-lg bg-brand-yellow text-brand-dark font-black text-xs tracking-wider">
+                                    CONGRATULATIONS!
+                                </span>
+                                <span id="prize-brand-tag" class="text-xs font-black text-amber-300">
+                                    全品牌適用
+                                </span>
+                            </div>
+
+                            <div class="my-auto text-center space-y-1.5 py-2">
+                                <p id="prize-subtitle" class="text-xs sm:text-sm font-bold text-gray-300">
+                                    恭喜獲得新用戶專屬運動禮遇
+                                </p>
+                                <h3 id="prize-title" class="text-2xl sm:text-4xl font-black text-brand-yellow tracking-tight">
+                                    免入會費折抵券 $1,500
+                                </h3>
+                                <p id="prize-desc" class="text-xs text-gray-300 max-w-md mx-auto">
+                                    憑券預約參觀並申辦任一全時段會籍，現折入會手續費 $1,500 元。
+                                </p>
+                            </div>
+
+                            <div class="flex items-center justify-between bg-white/10 backdrop-blur-xs rounded-xl px-4 py-2.5 border border-white/15">
+                                <div class="text-left">
+                                    <span class="block text-[10px] text-gray-400 font-bold">專屬優惠兌換碼</span>
+                                    <span id="prize-code" class="font-display font-black text-sm sm:text-base tracking-widest text-brand-yellow">GYMNEW1500</span>
+                                </div>
+                                <button type="button" onclick="copyScratchCouponCode()" class="px-3.5 py-1.5 rounded-lg bg-brand-yellow hover:bg-brand-bright text-brand-dark font-black text-xs transition cursor-pointer flex items-center gap-1.5">
+                                    <i class="fa-regular fa-copy"></i>
+                                    <span>複製序號</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- 上層銀漆塗層 Canvas -->
+                        <canvas id="scratch-canvas" class="absolute inset-0 w-full h-full cursor-crosshair touch-none transition-opacity duration-500"></canvas>
+                    </div>
+
+                    <!-- 卡片下方操作列 -->
+                    <div class="flex flex-wrap items-center justify-center gap-3 pt-1">
+                        <button type="button" onclick="revealAllScratchCard()" id="scratch-reveal-btn" class="px-4 py-2 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold text-xs transition cursor-pointer">
+                            一鍵全部刮開
+                        </button>
+                        <button type="button" onclick="resetScratchCard()" class="px-4 py-2 rounded-xl bg-brand-dark hover:bg-brand-charcoal text-brand-yellow font-black text-xs transition cursor-pointer flex items-center gap-1.5">
+                            <i class="fa-solid fa-rotate-right"></i>
+                            <span>換一張新刮刮卡</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 右側：獎項說明與領取兌換卡片 (佔 5 欄) -->
+                <div class="lg:col-span-5 space-y-5">
+                    <div id="scratch-status-card" class="bg-brand-gray rounded-2xl p-6 border border-gray-200 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-lg sm:text-xl font-black text-brand-dark">折價券領取狀態</h3>
+                            <span id="scratch-status-pill" class="px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-black">
+                                尚未刮開
+                            </span>
+                        </div>
+                        <p id="scratch-status-desc" class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                            每位新用戶皆可免費試手氣！刮開左側銀漆塗層後，即可解鎖專屬優惠碼並直接套用至免費體驗預約。
+                        </p>
+                        <div id="scratch-claim-actions" class="hidden pt-1 space-y-2.5">
+                            <button type="button" id="scratch-apply-booking-btn" onclick="applyCouponToBooking()" class="w-full py-3.5 px-5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-black text-sm shadow-md transition cursor-pointer flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-ticket"></i>
+                                <span>帶入優惠碼並預約免費體驗</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 本期獎池一覽 -->
+                    <div class="bg-white rounded-2xl p-5 border border-gray-200 space-y-2.5">
+                        <p class="text-xs font-black text-brand-dark flex items-center gap-1.5">
+                            <i class="fa-solid fa-award text-amber-500"></i>
+                            <span>本期新用戶刮刮樂獎池（100% 中獎）：</span>
+                        </p>
+                        <ul class="space-y-1.5 text-xs text-gray-600 font-medium">
+                            <li class="flex items-center justify-between py-1 border-b border-gray-100">
+                                <span>🥇 頭獎：免入會費折抵券 $1,500</span>
+                                <span class="text-[11px] font-bold text-rose-600">全品牌適用</span>
+                            </li>
+                            <li class="flex items-center justify-between py-1 border-b border-gray-100">
+                                <span>🥈 二獎：14 天全時段免費通行體驗券</span>
+                                <span class="text-[11px] font-bold text-amber-600">健身工廠 / WG</span>
+                            </li>
+                            <li class="flex items-center justify-between py-1 border-b border-gray-100">
+                                <span>🥉 三獎：1對1 私人教練體驗課＋InBody 檢測</span>
+                                <span class="text-[11px] font-bold text-emerald-600">價值 $1,800</span>
+                            </li>
+                            <li class="flex items-center justify-between py-1">
+                                <span>🎁 普獎：首月會籍月費現折 $500 體驗金</span>
+                                <span class="text-[11px] font-bold text-purple-600">24H場館適用</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 5-2. 互動體驗：「適合我的健身房小測驗」區塊 -->
+                                    <span class="text-sm sm:text-base font-black text-brand-dark tracking-wide">練哪家？</span>
+                                    <span class="text-[10px] font-bold text-amber-600 mt-0.5">TODAY GYM</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 開始轉盤按鈕（呼應參考圖轉盤下方長條亮眼按鈕） -->
+                        <button id="spin-roulette-btn" onclick="spinGymRoulette()" class="w-full max-w-xs py-3.5 px-8 rounded-xl bg-amber-500 hover:bg-amber-600 active:scale-95 disabled:opacity-60 disabled:cursor-not-allowed text-white font-black text-base tracking-wider shadow-lg transition cursor-pointer">
+                            開始轉盤！
+                        </button>
+                    </div>
+
+                    <!-- 右側：抽選結果卡片（佔 6 欄，呼應參考圖右側框線結果盒） -->
+                    <div class="lg:col-span-6">
+                        <div id="roulette-result-card" class="bg-white rounded-2xl p-6 sm:p-8 border-2 border-amber-400/50 shadow-sm min-h-[210px] flex flex-col justify-center space-y-4 transition-all">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-xl sm:text-2xl font-black text-brand-dark">抽選結果</h3>
+                                <span id="roulette-pool-badge" class="px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-black">
+                                    可抽選：4 家
+                                </span>
+                            </div>
+                            <p id="roulette-result-desc" class="text-sm sm:text-base text-gray-600 font-medium leading-relaxed">
+                                從 4 間健身房抽選，點「開始轉盤！」查看結果。
+                            </p>
+                            <div id="roulette-result-actions" class="hidden pt-2 flex flex-wrap gap-2.5">
+                                <!-- 抽出結果後由 JS 填入「查看特點設施」與「前往官方網站」按鈕 -->
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 下方：全部可抽選健身房列表（呼應參考圖「全部可抽選店家」卡片網格，支援勾選啟用/停用） -->
+            <div class="mt-10 sm:mt-12 space-y-4">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                    <h3 class="text-lg sm:text-xl font-black text-brand-dark">
+                        全部可抽選健身房（<span id="roulette-enabled-count">4</span> 間）
+                    </h3>
+                    <p class="text-xs text-gray-500 font-bold">
+                        <i class="fa-solid fa-circle-check text-amber-500 mr-1"></i>點擊卡片右上角開關可自由調整要納入轉盤的場館（至少保留 2 家）
+                    </p>
+                </div>
+
+                <div id="roulette-candidates-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <!-- 由 JS renderRouletteCandidates() 動態渲染 -->
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 6. 會員心得與評分：「分享評論」互動區塊 (還原參考圖片的表單結構與即時評論牆) -->
+    <section id="share-review-section" class="py-16 sm:py-24 bg-brand-gray border-t border-gray-200">
+        <div class="max-w-[1440px] mx-auto px-4 sm:px-8">
+            
+            <!-- 置中標題區（呼應參考圖：副標題 / 分享評論 / 鼓勵分享引導語） -->
+            <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-12 space-y-2">
+                <p class="text-xs sm:text-sm font-black tracking-widest text-amber-600 uppercase">
+                    MY FITNESS LOG・我的運動日常
+                </p>
+                <h2 class="text-3xl sm:text-5xl font-black tracking-[0.12em] text-brand-dark">
+                    分 享 評 論
+                </h2>
+                <p class="text-xs sm:text-sm text-gray-600 font-medium pt-1">
+                    給喜歡的健身房一點鼓勵，與大家分享你的訓練與場館體驗心得。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- 左側：寫下這次訓練表單卡片（佔 7 欄，完整還原參考圖框線與欄位配置） -->
+                <div class="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-9 border-2 border-amber-400/60 shadow-lg">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-xl sm:text-2xl font-black text-brand-dark flex items-center gap-2.5">
+                            <span class="w-2.5 h-6 bg-brand-yellow skew-text inline-block"></span>
+                            <span>寫下這次訓練</span>
+                        </h3>
+                        <span class="text-xs font-bold text-gray-400">公開分享至會員評論牆</span>
+                    </div>
+
+                    <form id="gym-review-form" onsubmit="submitGymReview(event)" class="space-y-5">
+                        <!-- 選擇場館（呼應「選擇店家」） -->
+                        <div>
+                            <label for="review-gym-select" class="block text-sm font-black text-gray-800 mb-2">
+                                選擇健身房場館 <span class="text-red-500">*</span>
+                            </label>
+                            <div class="relative">
+                                <select id="review-gym-select" required class="w-full appearance-none rounded-xl border border-gray-300 bg-white px-4 py-3 pr-10 text-sm font-bold text-brand-dark focus:outline-none focus:border-brand-dark focus:ring-2 focus:ring-brand-yellow/50 transition">
+                                    <option value="" disabled selected>請選擇健身房</option>
+                                    <option value="健身工廠 Fitness Factory">健身工廠 Fitness Factory</option>
+                                    <option value="World Gym 世界健身俱樂部">World Gym 世界健身俱樂部</option>
+                                    <option value="成吉思汗健身俱樂部">成吉思汗健身俱樂部</option>
+                                    <option value="Anytime Fitness 24H俱樂部">Anytime Fitness 24H俱樂部</option>
+                                </select>
+                                <i class="fa-solid fa-chevron-down text-xs text-gray-500 absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+                            </div>
+                        </div>
+
+                        <!-- 這次訓練評分（呼應參考圖 fieldset 外框 + 1星~5星 單選按鈕列） -->
+                        <fieldset class="rounded-xl border border-gray-300 px-4 pt-2.5 pb-4 bg-gray-50/40">
+                            <legend class="px-2 text-xs sm:text-sm font-black text-gray-700">
+                                這次訓練評分 <span class="text-red-500">*</span>
+                            </legend>
+                            <div class="flex flex-wrap items-center gap-4 sm:gap-6 pt-1">
+                                <label class="inline-flex items-center gap-2 cursor-pointer text-sm font-bold text-gray-800 hover:text-amber-600 transition">
+                                    <input type="radio" name="review-rating" value="1" class="w-4 h-4 accent-amber-500 cursor-pointer">
+                                    <span>1 星</span>
+                                </label>
+                                <label class="inline-flex items-center gap-2 cursor-pointer text-sm font-bold text-gray-800 hover:text-amber-600 transition">
+                                    <input type="radio" name="review-rating" value="2" class="w-4 h-4 accent-amber-500 cursor-pointer">
+                                    <span>2 星</span>
+                                </label>
+                                <label class="inline-flex items-center gap-2 cursor-pointer text-sm font-bold text-gray-800 hover:text-amber-600 transition">
+                                    <input type="radio" name="review-rating" value="3" class="w-4 h-4 accent-amber-500 cursor-pointer">
+                                    <span>3 星</span>
+                                </label>
+                                <label class="inline-flex items-center gap-2 cursor-pointer text-sm font-bold text-gray-800 hover:text-amber-600 transition">
+                                    <input type="radio" name="review-rating" value="4" class="w-4 h-4 accent-amber-500 cursor-pointer">
+                                    <span>4 星</span>
+                                </label>
+                                <label class="inline-flex items-center gap-2 cursor-pointer text-sm font-bold text-gray-800 hover:text-amber-600 transition">
+                                    <input type="radio" name="review-rating" value="5" checked class="w-4 h-4 accent-amber-500 cursor-pointer">
+                                    <span>5 星</span>
+                                </label>
+                            </div>
+                        </fieldset>
+
+                        <!-- 心得輸入框（呼應「心得（選填，最多 500 字）」） -->
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <label for="review-comment-input" class="text-sm font-black text-gray-800">
+                                    心得（選填，最多 500 字）
+                                </label>
+                                <span id="review-char-count" class="text-xs font-bold text-gray-400">0 / 500</span>
+                            </div>
+                            <textarea 
+                                id="review-comment-input" 
+                                rows="5" 
+                                maxlength="500" 
+                                oninput="updateReviewCharCount()"
+                                placeholder="分享這間健身房的器材數量、團課氣氛、環境整潔或業務服務感受..."
+                                class="w-full rounded-xl border border-gray-300 bg-white p-4 text-sm text-brand-dark focus:outline-none focus:border-brand-dark focus:ring-2 focus:ring-brand-yellow/50 transition resize-y"
+                            ></textarea>
+                        </div>
+
+                        <!-- 暱稱（選填，方便辨識發表者） -->
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-1">
+                            <div class="flex items-center gap-2.5 flex-1">
+                                <label for="review-author-input" class="text-xs font-black text-gray-600 whitespace-nowrap">顯示暱稱：</label>
+                                <input type="text" id="review-author-input" maxlength="20" placeholder="匿名健友（選填）" class="w-full sm:max-w-xs rounded-lg border border-gray-300 px-3 py-2 text-xs font-medium focus:outline-none focus:border-brand-dark">
+                            </div>
+
+                            <!-- 送出評論按鈕（呼應參考圖左下角亮眼行動按鈕） -->
+                            <button type="submit" class="px-7 py-3 rounded-xl bg-amber-500 hover:bg-amber-600 active:scale-95 text-white font-black text-sm tracking-wider shadow-md transition cursor-pointer">
+                                送出評論
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- 右側：即時健友評論牆與品牌篩選（佔 5 欄） -->
+                <div class="lg:col-span-5 bg-white rounded-3xl p-6 sm:p-7 border border-gray-200 shadow-md flex flex-col justify-between space-y-5">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 pb-4 border-b border-gray-100">
+                            <div>
+                                <span class="text-[11px] font-black text-amber-600 tracking-wider uppercase">COMMUNITY REVIEWS</span>
+                                <h3 class="text-lg sm:text-xl font-black text-brand-dark">最新健友真實評論</h3>
+                            </div>
+                            <div class="text-right">
+                                <span id="reviews-total-badge" class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-brand-dark text-brand-yellow text-xs font-black">
+                                    <i class="fa-solid fa-star"></i>
+                                    <span id="reviews-avg-score">4.8</span>（<span id="reviews-count-num">4</span> 則）
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- 評論品牌篩選標籤 -->
+                        <div class="flex flex-wrap gap-1.5 mt-4" id="review-filter-bar">
+                            <button onclick="filterReviewsList('all', this)" class="rev-filter-btn px-3 py-1.5 rounded-lg bg-brand-dark text-brand-yellow text-xs font-black transition cursor-pointer">
+                                全部
+                            </button>
+                            <button onclick="filterReviewsList('健身工廠 Fitness Factory', this)" class="rev-filter-btn px-3 py-1.5 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-bold transition cursor-pointer">
+                                健身工廠
+                            </button>
+                            <button onclick="filterReviewsList('World Gym 世界健身俱樂部', this)" class="rev-filter-btn px-3 py-1.5 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-bold transition cursor-pointer">
+                                World Gym
+                            </button>
+                            <button onclick="filterReviewsList('成吉思汗健身俱樂部', this)" class="rev-filter-btn px-3 py-1.5 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-bold transition cursor-pointer">
+                                成吉思汗
+                            </button>
+                            <button onclick="filterReviewsList('Anytime Fitness 24H俱樂部', this)" class="rev-filter-btn px-3 py-1.5 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-bold transition cursor-pointer">
+                                Anytime 24H
+                            </button>
+                        </div>
+
+                        <!-- 評論列表容器 -->
+                        <div id="reviews-list-container" class="mt-4 space-y-3 max-h-[430px] overflow-y-auto pr-1">
+                            <!-- 由 JS renderReviewsList() 動態渲染 -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. 維護者後台專區：「AI 自動新增健身房」工作台 -->
+    <section id="maintainer-ai-section" class="py-16 sm:py-24 bg-brand-dark text-white border-t-4 border-brand-yellow relative overflow-hidden">
+        <div class="hidden lg:block absolute -left-20 top-10 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="hidden lg:block absolute -right-20 bottom-10 w-96 h-96 bg-brand-yellow/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-[1440px] mx-auto px-4 sm:px-8 relative z-10">
+            <!-- 標題區 -->
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 pb-8 border-b border-white/15">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-xs font-black tracking-wider mb-2">
+                        <i class="fa-solid fa-robot"></i>
+                        <span>MAINTAINER AI STUDIO・維護者智慧建檔系統</span>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-black tracking-tight text-white">
+                        AI 一鍵整理並新增健身房
+                    </h2>
+                    <p class="text-gray-300 text-xs sm:text-sm mt-1.5 max-w-2xl">
+                        維護者只需輸入「健身房名稱」與「官方網站網址」，按下按鈕後 AI 將自動解析品牌定位、收費方案、器材特色與 3 組特點設施實景圖庫，並即時同步更新至全站介紹與彈窗！
+                    </p>
+                </div>
+
+                <!-- 快速一鍵填入範例按鈕 -->
+                <div class="flex flex-wrap items-center gap-2">
+                    <span class="text-xs text-gray-400 font-bold">快速測試範例：</span>
+                    <button type="button" onclick="fillAiDemoGym('TRUE YOGA FITNESS 全真瑜珈健身', 'https://www.trueyogafitness.com.tw')" class="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-bold text-emerald-300 border border-white/15 transition cursor-pointer">
+                        + 全真瑜珈健身
+                    </button>
+                    <button type="button" onclick="fillAiDemoGym('Hypercore 超核心健身中心', 'https://hypercore.com.tw')" class="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-bold text-brand-yellow border border-white/15 transition cursor-pointer">
+                        + 超核心健身中心
+                    </button>
+                    <button type="button" onclick="fillAiDemoGym('More Fit 摩爾健身', 'https://www.morefit.com.tw')" class="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-bold text-sky-300 border border-white/15 transition cursor-pointer">
+                        + More Fit 摩爾健身
+                    </button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mt-8 items-start">
+                <!-- 左側：維護者輸入表單 (佔 6 欄) -->
+                <div class="lg:col-span-6 bg-brand-charcoal rounded-3xl p-6 sm:p-8 border border-white/15 shadow-2xl space-y-6">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg sm:text-xl font-black text-white flex items-center gap-2">
+                            <span class="w-2.5 h-6 bg-emerald-400 skew-text inline-block"></span>
+                            <span>輸入新健身房基本資訊</span>
+                        </h3>
+                        <span class="text-xs font-bold text-gray-400">支援自動建立設施圖庫</span>
+                    </div>
+
+                    <form id="ai-add-gym-form" onsubmit="handleAiAddGym(event)" class="space-y-5">
+                        <div>
+                            <label for="ai-gym-name" class="block text-xs sm:text-sm font-black text-gray-200 mb-2">
+                                1. 健身房名稱 <span class="text-brand-yellow">*</span>
+                            </label>
+                            <input
+                                type="text"
+                                id="ai-gym-name"
+                                required
+                                placeholder="例如：TRUE YOGA FITNESS 全真瑜珈健身、超核心健身中心..."
+                                class="w-full rounded-xl bg-black/50 border border-white/20 px-4 py-3.5 text-sm font-bold text-white placeholder-gray-500 focus:outline-none focus:border-brand-yellow focus:ring-2 focus:ring-brand-yellow/30 transition"
+                            >
+                        </div>
+
+                        <div>
+                            <label for="ai-gym-url" class="block text-xs sm:text-sm font-black text-gray-200 mb-2">
+                                2. 官方網站網址 <span class="text-brand-yellow">*</span>
+                            </label>
+                            <input
+                                type="url"
+                                id="ai-gym-url"
+                                required
+                                placeholder="例如：https://www.trueyogafitness.com.tw"
+                                class="w-full rounded-xl bg-black/50 border border-white/20 px-4 py-3.5 text-sm font-bold text-white placeholder-gray-500 focus:outline-none focus:border-brand-yellow focus:ring-2 focus:ring-brand-yellow/30 transition"
+                            >
+                        </div>
+
+                        <div class="pt-1">
+                            <button
+                                type="submit"
+                                id="ai-generate-btn"
+                                class="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 active:scale-[0.99] disabled:opacity-60 text-brand-dark font-black text-sm sm:text-base tracking-wide shadow-xl flex items-center justify-center gap-2.5 transition cursor-pointer"
+                            >
+                                <i class="fa-solid fa-wand-magic-sparkles text-lg"></i>
+                                <span>AI 自動整理並同步至全站與設施頁面</span>
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- AI 執行進度條與日誌顯示區 -->
+                    <div id="ai-progress-box" class="hidden rounded-2xl bg-black/60 border border-emerald-400/30 p-4 space-y-2.5">
+                        <div class="flex items-center justify-between text-xs font-black">
+                            <span id="ai-progress-status" class="text-emerald-300 flex items-center gap-2">
+                                <i class="fa-solid fa-circle-notch fa-spin"></i>
+                                <span>AI 正在分析官網結構與特色...</span>
+                            </span>
+                            <span id="ai-progress-percent" class="text-brand-yellow font-display">0%</span>
+                        </div>
+                        <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                            <div id="ai-progress-bar" class="h-full bg-gradient-to-r from-emerald-400 to-brand-yellow transition-all duration-300" style="width: 0%;"></div>
+                        </div>
+                        <p id="ai-progress-detail" class="text-[11px] text-gray-400 font-medium">
+                            準備擷取品牌定位、月費模式、適合族群與特點設施實景圖...
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 右側：AI 整理結果即時預覽與已收錄場館清單 (佔 6 欄) -->
+                <div class="lg:col-span-6 space-y-5">
+                    <!-- 最新整理結果預覽卡 -->
+                    <div id="ai-result-preview-card" class="bg-white/5 backdrop-blur-md rounded-3xl p-6 sm:p-7 border border-white/15 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-black text-brand-yellow tracking-wider uppercase">
+                                <i class="fa-solid fa-sparkles mr-1"></i>AI STRUCTURED OUTPUT PREVIEW
+                            </span>
+                            <span id="ai-total-gyms-badge" class="px-3 py-1 rounded-full bg-white/10 text-xs font-bold text-gray-200">
+                                目前全站共 4 家健身房
+                            </span>
+                        </div>
+
+                        <div id="ai-preview-content" class="space-y-3">
+                            <p class="text-sm text-gray-300 leading-relaxed">
+                                尚未執行新的 AI 建檔任務。請在左側輸入任一健身房名稱與官網網址（或點擊上方「快速測試範例」），AI 將自動產生完整結構化資料，包含：
+                            </p>
+                            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-gray-300 font-medium">
+                                <li class="flex items-center gap-2 bg-black/30 p-2.5 rounded-xl border border-white/10">
+                                    <i class="fa-solid fa-circle-check text-emerald-400"></i>
+                                    <span>品牌核心定位與簡介摘要</span>
+                                </li>
+                                <li class="flex items-center gap-2 bg-black/30 p-2.5 rounded-xl border border-white/10">
+                                    <i class="fa-solid fa-circle-check text-emerald-400"></i>
+                                    <span>收費制度與適合族群分析</span>
+                                </li>
+                                <li class="flex items-center gap-2 bg-black/30 p-2.5 rounded-xl border border-white/10">
+                                    <i class="fa-solid fa-circle-check text-emerald-400"></i>
+                                    <span>3 組特點設施實景圖庫與解說</span>
+                                </li>
+                                <li class="flex items-center gap-2 bg-black/30 p-2.5 rounded-xl border border-white/10">
+                                    <i class="fa-solid fa-circle-check text-emerald-400"></i>
+                                    <span>自動同步比較表、轉盤與評論</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 已透過 AI 新增的場館管理列表 -->
+                    <div id="ai-added-list-box" class="hidden bg-brand-charcoal rounded-2xl p-5 border border-white/15 space-y-3">
+                        <h4 class="text-xs font-black text-emerald-300 uppercase tracking-wider">
+                            本次新增的場館快捷管理
+                        </h4>
+                        <div id="ai-added-list" class="space-y-2">
+                            <!-- 由 JS 動態列出新增的場館 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁尾 (Footer) -->
+    <footer class="bg-brand-dark text-gray-400 py-10 px-4 sm:px-8 border-t border-white/10">
+        <div class="max-w-[1440px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+            <div class="flex items-center gap-2.5 text-white">
+                <span class="w-2.5 h-5 bg-brand-yellow skew-text inline-block"></span>
+                <span class="font-black tracking-wide">GYM GUIDE TAIWAN 台灣各大連鎖健身房全攻略</span>
+            </div>
+            <p class="text-center sm:text-right">
+                ※ 各品牌月費與設施依各分館現場公告為準，點擊「前往官方網站」可查詢最新方案與課表。
+            </p>
+        </div>
+    </footer>
+
+    <!-- Modal 1: 品牌深度介紹與特點設施實景圖庫彈窗 (Facility Gallery Modal) -->
+    <div id="brand-detail-modal" onclick="if(event.target === this) closeBrandDetailModal()" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-sm overflow-y-auto">
+        <div class="bg-white rounded-3xl max-w-5xl w-full overflow-hidden shadow-2xl my-auto border border-gray-200 animate-[fadeIn_0.2s_ease-out]">
+            <!-- 彈窗頂部標題列 -->
+            <div id="detail-modal-header" class="bg-brand-dark p-5 sm:p-6 text-white flex items-center justify-between border-b-4 border-brand-yellow transition-colors duration-300">
+                <div class="flex items-center gap-3">
+                    <span id="detail-modal-badge" class="px-3 py-1 rounded-lg bg-brand-yellow text-brand-dark font-black text-xs tracking-wider transition-colors duration-300">
+                        FACILITY GALLERY
+                    </span>
+                    <div>
+                        <p id="detail-modal-en" class="font-display font-bold text-[11px] text-brand-yellow tracking-widest uppercase transition-colors duration-300">FITNESS FACTORY</p>
+                        <h3 id="detail-modal-title" class="text-xl sm:text-2xl font-black tracking-tight">健身工廠 Fitness Factory</h3>
+                    </div>
+                </div>
+                <button onclick="closeBrandDetailModal()" aria-label="關閉視窗" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/25 text-white flex items-center justify-center transition cursor-pointer">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <!-- 彈窗主體：左側實景圖庫輪播 + 右側深度特色解析 -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 max-h-[82vh] overflow-y-auto">
+                
+                <!-- 左側：特點設施實景圖庫 (佔 7 欄) -->
+                <div class="lg:col-span-7 bg-brand-charcoal p-4 sm:p-6 flex flex-col justify-between text-white">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span id="gallery-header-label" class="text-xs font-black text-brand-yellow tracking-wider flex items-center gap-1.5 transition-colors duration-300">
+                                <i class="fa-solid fa-camera"></i>
+                                <span>特點設施實景圖庫（點擊縮圖或左右鍵切換）</span>
+                            </span>
+                            <span id="gallery-counter" class="font-display text-xs font-black bg-white/10 px-2.5 py-1 rounded-md text-gray-200">
+                                1 / 3
+                            </span>
+                        </div>
+
+                        <!-- 大圖展示容器 -->
+                        <div class="relative rounded-2xl overflow-hidden bg-black aspect-[16/10] group shadow-xl border border-white/10">
+                            <img 
+                                id="gallery-main-img" 
+                                src="" 
+                                alt="健身房特點設施圖片" 
+                                class="w-full h-full object-cover transition-opacity duration-300"
+                            >
+                            <!-- 漸層底部說明遮罩 -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent pointer-events-none"></div>
+                            
+                            <!-- 左切換箭頭 -->
+                            <button onclick="prevFacilitySlide()" aria-label="上一張設施圖片" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 hover:bg-white text-white hover:text-brand-dark flex items-center justify-center backdrop-blur-xs transition shadow-lg cursor-pointer">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </button>
+                            <!-- 右切換箭頭 -->
+                            <button onclick="nextFacilitySlide()" aria-label="下一張設施圖片" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 hover:bg-white text-white hover:text-brand-dark flex items-center justify-center backdrop-blur-xs transition shadow-lg cursor-pointer">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+
+                            <!-- 當前設施標題與說明 -->
+                            <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
+                                <span id="gallery-facility-tag" class="inline-block px-2.5 py-0.5 rounded bg-brand-yellow text-brand-dark font-black text-[11px] mb-1.5 transition-colors duration-300">
+                                    核心設施亮點
+                                </span>
+                                <h4 id="gallery-facility-title" class="text-base sm:text-xl font-black text-white leading-snug">
+                                    設施標題
+                                </h4>
+                                <p id="gallery-facility-desc" class="text-xs sm:text-sm text-gray-200 mt-1 leading-relaxed">
+                                    設施詳細說明文字
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 縮圖選擇列 -->
+                    <div id="gallery-thumbs-row" class="grid grid-cols-3 gap-2.5 sm:gap-3 mt-4">
+                        <!-- 由 JS 動態生成 3 張縮圖按鈕 -->
+                    </div>
+                </div>
+
+                <!-- 右側：品牌深度規格、收費模式與行動按鈕 (佔 5 欄) -->
+                <div class="lg:col-span-5 p-5 sm:p-7 flex flex-col justify-between bg-white space-y-5">
+                    <div class="space-y-4">
+                        <div>
+                            <span id="detail-modal-overview-label" class="text-xs font-black text-amber-600 uppercase tracking-wider transition-colors duration-300">BRAND OVERVIEW</span>
+                            <h4 class="text-lg font-black text-brand-dark mt-0.5">品牌核心定位與亮點</h4>
+                            <p id="detail-modal-desc" class="text-xs sm:text-sm text-gray-700 leading-relaxed mt-2">
+                                品牌介紹內容
+                            </p>
+                        </div>
+
+                        <!-- 關鍵特色標籤 -->
+                        <div id="detail-modal-tags" class="flex flex-wrap gap-1.5">
+                            <!-- 由 JS 動態填入 -->
+                        </div>
+
+                        <!-- 兩大資訊卡片：收費模式 & 適合族群 -->
+                        <div class="space-y-3 pt-1">
+                            <div class="p-3.5 rounded-2xl bg-brand-gray border border-gray-200">
+                                <p class="text-xs font-black text-brand-dark flex items-center gap-1.5 mb-1">
+                                    <i id="detail-modal-pricing-icon" class="fa-solid fa-file-invoice-dollar text-amber-600 transition-colors duration-300"></i>
+                                    <span>收費與會籍特色</span>
+                                </p>
+                                <p id="detail-modal-pricing" class="text-xs text-gray-700 leading-relaxed font-medium">
+                                    收費說明
+                                </p>
+                            </div>
+
+                            <div class="p-3.5 rounded-2xl bg-brand-gray border border-gray-200">
+                                <p class="text-xs font-black text-brand-dark flex items-center gap-1.5 mb-1">
+                                    <i id="detail-modal-audience-icon" class="fa-solid fa-user-check text-emerald-600 transition-colors duration-300"></i>
+                                    <span>最適合的運動族群</span>
+                                </p>
+                                <p id="detail-modal-audience" class="text-xs text-gray-700 leading-relaxed font-medium">
+                                    適合族群說明
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 底部行動按鈕區 -->
+                    <div class="pt-4 border-t border-gray-200 flex flex-col gap-2.5">
+                        <a id="detail-modal-official-link" href="#" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 px-5 rounded-xl bg-brand-dark hover:bg-brand-charcoal text-brand-yellow font-black text-sm text-center flex items-center justify-center gap-2 shadow-md transition">
+                            <span>前往官方網站查看分館與課表</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                        </a>
+                        <button id="detail-modal-book-btn" onclick="" class="w-full py-3.5 px-5 rounded-xl bg-brand-yellow hover:bg-brand-bright text-brand-dark font-black text-sm text-center transition shadow-xs cursor-pointer">
+                            立即預約此品牌免費體驗
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2: 免費體驗預約表單彈窗 (支援四大品牌選擇) -->
+    <div id="booking-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/75 backdrop-blur-xs">
+        <div class="bg-white rounded-2xl max-w-lg w-full overflow-hidden shadow-2xl">
+            <div class="bg-brand-dark p-6 text-white flex items-center justify-between border-b-4 border-brand-yellow">
+                <div>
+                    <span class="text-brand-yellow font-display font-black text-xs tracking-widest uppercase">FREE GYM TRIAL PASS</span>
+                    <h3 id="booking-modal-title" class="text-xl sm:text-2xl font-black mt-0.5">免費體驗與參觀預約</h3>
+                </div>
+                <button onclick="closeBookingModal()" class="w-9 h-9 rounded-full bg-white/10 hover:bg-brand-yellow hover:text-brand-dark flex items-center justify-center transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <form id="booking-form" onsubmit="submitBooking(event)" class="p-6 space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-black text-gray-700 mb-1.5">選擇健身房品牌 *</label>
+                        <select id="booking-brand" class="w-full rounded-xl border border-gray-300 px-3.5 py-2.5 text-sm font-bold text-brand-dark focus:outline-none focus:border-brand-dark bg-gray-50">
+                            <option value="健身工廠 Fitness Factory">健身工廠 Fitness Factory</option>
+                            <option value="World Gym 世界健身俱樂部">World Gym 世界健身俱樂部</option>
+                            <option value="成吉思汗健身俱樂部">成吉思汗健身俱樂部</option>
+                            <option value="Anytime Fitness 24H俱樂部">Anytime Fitness 24H俱樂部</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-black text-gray-700 mb-1.5">希望體驗縣市 *</label>
+                        <select id="booking-city" class="w-full rounded-xl border border-gray-300 px-3.5 py-2.5 text-sm font-bold text-brand-dark focus:outline-none focus:border-brand-dark bg-gray-50">
+                            <option value="台北市 / 新北市">台北市 / 新北市</option>
+                            <option value="桃園市 / 新竹縣市">桃園市 / 新竹縣市</option>
+                            <option value="台中市 / 彰化縣">台中市 / 彰化縣</option>
+                            <option value="台南市 / 高雄市">台南市 / 高雄市</option>
+                            <option value="其他縣市地區">其他縣市地區</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-black text-gray-700 mb-1.5">您的姓名 *</label>
+                        <input type="text" id="booking-name" required placeholder="請輸入真實姓名" class="w-full rounded-xl border border-gray-300 px-3.5 py-2.5 text-sm focus:outline-none focus:border-brand-dark">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-black text-gray-700 mb-1.5">聯絡手機 *</label>
+                        <input type="tel" id="booking-phone" required placeholder="例如：0912-345-678" class="w-full rounded-xl border border-gray-300 px-3.5 py-2.5 text-sm focus:outline-none focus:border-brand-dark">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-black text-gray-700 mb-1.5">希望體驗內容</label>
+                    <div class="grid grid-cols-3 gap-2 text-xs font-bold">
+                        <label class="cursor-pointer">
+                            <input type="radio" name="goal" value="場館參觀與器材體驗" checked class="peer hidden">
+                            <div class="p-2.5 text-center rounded-xl border border-gray-200 peer-checked:bg-brand-yellow peer-checked:border-brand-dark peer-checked:font-black transition">
+                                器材自由體驗
+                            </div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="goal" value="免費InBody身體組成檢測" class="peer hidden">
+                            <div class="p-2.5 text-center rounded-xl border border-gray-200 peer-checked:bg-brand-yellow peer-checked:border-brand-dark peer-checked:font-black transition">
+                                InBody 檢測
+                            </div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="goal" value="月費方案與優惠諮詢" class="peer hidden">
+                            <div class="p-2.5 text-center rounded-xl border border-gray-200 peer-checked:bg-brand-yellow peer-checked:border-brand-dark peer-checked:font-black transition">
+                                方案費用諮詢
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="pt-2">
+                    <button type="submit" class="w-full py-3.5 rounded-xl bg-brand-dark hover:bg-brand-charcoal text-brand-yellow font-black text-sm tracking-wider shadow-lg transition">
+                        送出免費體驗預約申請
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript 互動邏輯 -->
+    <script>
+        // 1. 四大品牌資料設定 (包含品牌基本資料與各家特點設施實景圖庫)
+        const brandsCatalog = {
+            ff: {
+                name: '健身工廠 Fitness Factory',
+                shortName: '健身工廠',
+                enName: 'FITNESS FACTORY TAIWAN',
+                category: 'all-round',
+                categoryName: '大型連鎖全能型',
+                categoryBadge: '大型連鎖全能型・股票代號 8462',
+                quickStat: '全台 75+ 廠館',
+                cardImage: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=1000&q=80',
+                cardTagBg: 'bg-brand-yellow text-brand-dark',
+                cardSubBadge: '股票代號 8462',
+                cardHoverBorder: 'hover:border-brand-yellow',
+                cardAccentText: 'text-amber-600',
+                chipHighlightClass: 'bg-amber-100 text-amber-900',
+                officialBtnMainClass: 'bg-brand-dark hover:bg-brand-charcoal text-brand-yellow',
+                quickCardGradient: 'from-[#D4AF37] to-[#E5C158] text-white',
+                quickBtnClass: 'bg-brand-dark text-brand-yellow hover:opacity-90',
+                tableLocations: '全台 75+ 大型廠館（持續展店預售中）',
+                tableTransparency: '★★★★★ 極高（全台統一公開價目表）',
+                tableEquipment: '頂級進口器械齊全、深蹲架與自由重量區寬敞',
+                tableFacilities: '萊美/飛輪/瑜珈團課豐富、三溫暖蒸氣烤箱',
+                tableHours: '週一~六 06:00-24:00 / 週日 08:00-24:00',
+                tableSales: '極低（嚴格禁止強迫推銷）',
+                rouletteColor: '#FDE68A',
+                rouletteTextColor: '#111111',
+                tag: '公開透明月費・首家上市運動品牌',
+                desc: '台灣首家公開發行上市的運動健身中心，全台超過 75 間大型廠館。引進 Life Fitness、Hammer Strength 等頂級進口重訓器械與豐富萊美團課，以「價格公開透明、絕無強迫推銷」深受健身族群信賴。',
+                pricing: '銀卡（限時段）/ 金卡（全時段）/ 鈦金卡（全台跨區），月費約 $988～$1,688 元，全台統一公開價目表，新廠預售期另有免入會費優惠。',
+                audience: '重視價格公開透明、怕被業務強迫推銷的新手、追求頂級進口機械與自由重量器材品質的中高階訓練者。',
+                highlights: ['#公開透明價格', '#HammerStrength頂級器械', '#豐富萊美團課', '#全台75+大型廠館'],
+                url: 'https://www.fitnessfactory.com.tw/tw',
+                bgImage: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1920&q=85',
+                accentBtnClass: 'bg-brand-yellow text-brand-dark',
+                borderColor: 'border-brand-yellow',
+                modalTheme: {
+                    headerClass: 'bg-brand-dark border-brand-yellow',
+                    badgeClass: 'bg-brand-yellow text-brand-dark',
+                    enTextClass: 'text-brand-yellow',
+                    galleryLabelClass: 'text-brand-yellow',
+                    facilityTagClass: 'bg-brand-yellow text-brand-dark',
+                    thumbActiveClass: 'border-brand-yellow opacity-100 ring-2 ring-brand-yellow/50',
+                    overviewLabelClass: 'text-amber-600',
+                    tagChipClass: 'bg-amber-100 text-amber-900',
+                    iconClass: 'text-amber-600',
+                    officialBtnClass: 'bg-brand-dark hover:bg-brand-charcoal text-brand-yellow',
+                    bookBtnClass: 'bg-brand-yellow hover:bg-brand-bright text-brand-dark'
+                },
+                matchReason: '重視價格公開透明、頂級重訓器材品質，且希望在無強迫推銷環境下自在運動的你！',
+                facilities: [
+                    {
+                        tag: '重訓核心區',
+                        title: '奧林匹克認證自由重量區',
+                        desc: '引進美國原裝 Hammer Strength 與 Life Fitness 頂級掛片式器械、多組深蹲架與完整大重量啞鈴組，空間寬敞不擁擠。',
+                        enLabel: 'OLYMPIC FREE WEIGHT ZONE',
+                        img: 'https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=1200'
+                    },
+                    {
+                        tag: '有氧心肺區',
+                        title: '國際標準有氧心肺訓練區',
+                        desc: '配備數十台頂級跑步機、滑步機、登階機與划船機，結合全景落地窗採光與個人視聽娛樂螢幕，減脂訓練高效舒適。',
+                        enLabel: 'CARDIO & ENDURANCE ZONE',
+                        img: 'https://images.pexels.com/photos/1954524/pexels-photo-1954524.jpeg?auto=compress&cs=tinysrgb&w=1200'
+                    },
+                    {
+                        tag: '多功能與團課',
+                        title: '專業多功能草皮與萊美團課教室',
+                        desc: '設有高規格人工草皮雪橇道、TRX 懸吊訓練架，以及每週開設數十堂 Les Mills 萊美有氧、飛輪與瑜珈團體課程。',
+                        enLabel: 'LES MILLS & TURF STUDIO',
+                        img: 'https://images.pexels.com/photos/3757954/pexels-photo-3757954.jpeg?auto=compress&cs=tinysrgb&w=1200'
+                    }
+                ]
+            },
+            wg: {
+                name: 'World Gym 世界健身俱樂部',
+                shortName: 'World Gym',
+                enName: 'WORLD GYM TAIWAN',
+                category: 'all-round',
+                categoryName: '大型連鎖全能型',
+                categoryBadge: '大型連鎖全能型・全台 120+ 會館',
+                quickStat: '全台 120+ 會館',
+                cardImage: 'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=1000&q=80',
+                cardTagBg: 'bg-red-600 text-white',
+                cardSubBadge: '全台市佔第一',
+                cardHoverBorder: 'hover:border-red-500',
+                cardAccentText: 'text-red-600',
+                chipHighlightClass: 'bg-red-100 text-red-900',
+                officialBtnMainClass: 'bg-red-600 hover:bg-red-700 text-white',
+                quickCardGradient: 'from-[#DC2626] to-[#EF4444] text-white',
+                quickBtnClass: 'bg-red-600 text-white hover:bg-red-700',
+                tableLocations: '全台 120+ 會館（全台市佔率第一）',
+                tableTransparency: '★★★☆☆ 中等（依專案與業務報價浮動）',
+                tableEquipment: '旗艦店設備齊全、部分社區店自由重量較少',
+                tableFacilities: '最豐富！室內溫水泳池、SPA水療池、海量團課',
+                tableHours: '多數為 06:00-24:00（部分都會館延至01:00）',
+                tableSales: '中等（視分館顧問與教練風格而異）',
+                rouletteColor: '#FECACA',
+                rouletteTextColor: '#7F1D1D',
+                tag: '全台 120+ 據點・泳池SPA全能旗艦',
+                desc: '台灣據點數量最多、規模最大的連鎖健身龍頭，涵蓋都會旗艦館、Elite 尊爵館與 Express 快捷館。最大優勢在於超齊全休閒設施與海量有氧團體課程，滿足一站式運動與放鬆需求。',
+                pricing: '提供單點會籍、縣市通、全台通及 Express 輕量方案（約 $588～$1,588+ / 月），依會館等級（是否含泳池）與活動專案而定。',
+                audience: '熱愛有氧/飛輪/瑜珈團課的學員、喜歡運動後享受室內泳池與三溫暖 SPA 放鬆者、經常出差需要全台跨點運動者。',
+                highlights: ['#全台120+據點', '#室內溫水泳池SPA', '#海量有氧飛輪團課', '#全台跨區通行'],
+                url: 'https://www.worldgymtaiwan.com',
+                bgImage: 'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=1920&q=85',
+                accentBtnClass: 'bg-red-600 text-white',
+                borderColor: 'border-red-600',
+                modalTheme: {
+                    headerClass: 'bg-gradient-to-r from-red-950 via-red-900 to-zinc-900 border-red-500',
+                    badgeClass: 'bg-red-600 text-white',
+                    enTextClass: 'text-red-300',
+                    galleryLabelClass: 'text-red-400',
+                    facilityTagClass: 'bg-red-600 text-white',
+                    thumbActiveClass: 'border-red-500 opacity-100 ring-2 ring-red-500/50',
+                    overviewLabelClass: 'text-red-600',
+                    tagChipClass: 'bg-red-100 text-red-900',
+                    iconClass: 'text-red-600',
+                    officialBtnClass: 'bg-red-600 hover:bg-red-700 text-white',
+                    bookBtnClass: 'bg-red-50 hover:bg-red-100 text-red-700 border-2 border-red-600'
+                },
+                matchReason: '喜愛多元有氧團課、運動後享受泳池與三溫暖放鬆，或需要全台超過百間據點跨區通行的你！',
+                facilities: [
+                    {
+                        tag: '旗艦休閒水區',
+                        title: '室內溫水游泳池與 SPA 水療區',
+                        desc: '多數大型旗艦會館配備標準室內溫水游泳池、水療按摩池、三溫暖蒸氣室與烤箱，運動後能徹底舒緩肌肉疲勞。',
+                        enLabel: 'INDOOR HEATED POOL & SPA',
+                        img: 'https://images.pexels.com/photos/261185/pexels-photo-261185.jpeg?auto=compress&cs=tinysrgb&w=1200'
+                    },
+                    {
+                        tag: '聲光團體教室',
+                        title: '多元有氧與沉浸式飛輪聲光教室',
+                        desc: '全台每週開課量第一，提供 BodyCombat、Zumba、熱瑜珈與演唱會級聲光飛輪教室，專業師資帶動全場氣氛。',
+                        enLabel: 'CYCLING & GROUP STUDIO',
+                        img: 'https://images.pexels.com/photos/3775566/pexels-photo-3775566.jpeg?auto=compress&cs=tinysrgb&w=1200'
+                    },
+                    {
+                        tag: '全能器材配置',
+                        title: '全方位重訓與功能性訓練區',
+                        desc: '引進多品牌插銷式重訓機、雙軌纜繩訓練站、草皮敏捷訓練區與心肺有氧機台，滿足初階到進階全身肌群訓練。',
+                        enLabel: 'FULL STRENGTH & CABLE ZONE',
+                        img: 'https://images.pexels.com/photos/2261477/pexels-photo-2261477.jpeg?auto=compress&cs=tinysrgb&w=1200'
+                    }
+                ]
+            },
+            gk: {
+                name: '成吉思汗健身俱樂部',
+                shortName: '成吉思汗',
+                enName: 'GENGHIS KHAN FITNESS CLUB',
+                category: 'hardcore',
+                categoryName: '硬派健力格鬥型',
+                categoryBadge: '硬派健力格鬥型・24H旗艦場館',
+                quickStat: '北中主力旗艦館',
+                cardImage: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1000&q=80',
+                cardTagBg: 'bg-brand-dark text-brand-yellow border border-brand-yellow/40',
+                cardSubBadge: '24H旗艦級場館',
+                cardHoverBorder: 'hover:border-brand-dark',
+                cardAccentText: 'text-amber-700',
+                chipHighlightClass: 'bg-zinc-800 text-brand-yellow',
+                officialBtnMainClass: 'bg-brand-dark hover:bg-zinc-800 text-white',
+                quickCardGradient: 'from-[#1F2937] to-[#4B5563] text-brand-yellow',
+                quickBtnClass: 'bg-brand-dark text-white hover:bg-gray-800',
+                tableLocations: '北中大型旗艦場館為主（雙北/桃園/台中）',
+                tableTransparency: '★★★★★ 極高（公開年費一口價制）',
+                tableEquipment: '業界頂規！大量比賽級深蹲架與舉重台',
+                tableFacilities: '專業 MMA 格鬥八角籠、拳擊/柔術/有氧團課',
+                tableHours: '24 小時全年無休',
+                tableSales: '極低（無業務制、教練不強迫推課）',
+                rouletteColor: '#E5E7EB',
+                rouletteTextColor: '#111827',
+                tag: '硬派健力重訓・MMA綜合格鬥場',
+                desc: '由館長陳之漢創立，被譽為「台灣健力三項與自由重量天堂」。場館配置業界最高密度深蹲架、奧林匹克舉重台與專業比賽級槓片，更設有標準 MMA 綜合格鬥八角籠與拳擊擂台。',
+                pricing: '採公開透明年費一口價制度（換算平均每月約 $1,000～$1,300 元左右），24小時全年無休，無業務強迫推銷文化。',
+                audience: '熱愛自由重量、健力三項（深蹲/臥推/硬舉）、奧林匹克舉重，以及想學習綜合格鬥 MMA、拳擊、巴西柔術的硬派玩家。',
+                highlights: ['#健力三項自由重量天堂', '#MMA格鬥八角籠', '#24小時全年無休', '#嚴格教練培訓制度'],
+                url: 'https://www.gk-fitness.com.tw',
+                bgImage: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1920&q=85',
+                accentBtnClass: 'bg-amber-500 text-brand-dark',
+                borderColor: 'border-brand-dark',
+                modalTheme: {
+                    headerClass: 'bg-zinc-950 border-amber-500',
+                    badgeClass: 'bg-amber-500 text-zinc-950',
+                    enTextClass: 'text-amber-400',
+                    galleryLabelClass: 'text-amber-400',
+                    facilityTagClass: 'bg-amber-500 text-zinc-950',
+                    thumbActiveClass: 'border-amber-500 opacity-100 ring-2 ring-amber-500/50',
+                    overviewLabelClass: 'text-amber-700',
+                    tagChipClass: 'bg-zinc-800 text-brand-yellow',
+                    iconClass: 'text-amber-600',
+                    officialBtnClass: 'bg-zinc-900 hover:bg-black text-amber-400',
+                    bookBtnClass: 'bg-amber-500 hover:bg-amber-400 text-zinc-950'
+                },
+                matchReason: '熱愛自由重量、深蹲臥推硬舉健力訓練，或對綜合格鬥、拳擊與柔術課程有高度熱情的你！',
+                facilities: [
+                    {
+                        tag: '專業格鬥殿堂',
+                        title: '專業綜合格鬥八角籠與拳擊擂台區',
+                        desc: '配置標準 MMA 綜合格鬥八角籠、拳擊擂台、專業摔角地墊與沙包區，提供散打、拳擊、泰拳與巴西柔術實戰訓練。',
+                        enLabel: 'MMA OCTAGON & BOXING RING',
+                        img: 'https://images.pexels.com/photos/4761792/pexels-photo-4761792.jpeg?auto=compress&cs=tinysrgb&w=1200'
+                    },
+                    {
+                        tag: '競技級力量區',
+                        title: '競技級舉重台與健力深蹲架陣列',
+                        desc: '重金引進 Eleiko 等國際比賽級槓鈴與競技槓片，搭配數十座獨立硬舉舉重台與草皮雪橇道，尖峰時段免排隊。',
+                        enLabel: 'POWERLIFTING & SQUAT RACKS',
+                        img: 'https://images.pexels.com/photos/949126/pexels-photo-949126.jpeg?auto=compress&cs=tinysrgb&w=1200'
+                    },
+                    {
+                        tag: '大重量重訓區',
+                        title: '硬派重訓自由重量專區',
+                        desc: '提供超大重量競技啞鈴組、專業健力臥推椅與高強度力量訓練架，營造專注純粹、無業務推銷打擾的訓練氛圍。',
+                        enLabel: 'HEAVY DUMBBELL & STRENGTH',
+                        img: 'https://images.pexels.com/photos/1229356/pexels-photo-1229356.jpeg?auto=compress&cs=tinysrgb&w=1200'
+                    }
+                ]
+            },
+            af: {
+                name: 'Anytime Fitness 24H俱樂部',
+                shortName: 'Anytime 24H',
+                enName: 'ANYTIME FITNESS 24H',
+                category: '24h',
+                categoryName: '24H社區便利型',
+                categoryBadge: '24H社區便利型・全球 5,000+ 分店',
+                quickStat: '全球 5,000+ 據點',
+                cardImage: 'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=1000&q=80',
+                cardTagBg: 'bg-purple-600 text-white',
+                cardSubBadge: '全球 5,000+ 分店通用',
+                cardHoverBorder: 'hover:border-purple-600',
+                cardAccentText: 'text-purple-700',
+                chipHighlightClass: 'bg-purple-100 text-purple-900',
+                officialBtnMainClass: 'bg-purple-700 hover:bg-purple-800 text-white',
+                quickCardGradient: 'from-[#6D28D9] to-[#8B5CF6] text-white',
+                quickBtnClass: 'bg-purple-700 text-white hover:bg-purple-800',
+                tableLocations: '全台約 25+ 社區據點（全球 5,000+ 通用）',
+                tableTransparency: '★★★★☆ 高（各加盟店公開月費制）',
+                tableEquipment: '精巧齊全（具備基礎深蹲架、啞鈴與有氧機）',
+                tableFacilities: '無大型團課與泳池，主打獨立乾濕分離衛浴',
+                tableHours: '24 小時全年無休（磁扣感應進出）',
+                tableSales: '極低（深夜無人時段完全自主訓練）',
+                rouletteColor: '#DDD6FE',
+                rouletteTextColor: '#4C1D95',
+                tag: '24H全年無休・全球5,000+分店通用',
+                desc: '來自美國的全球最大24小時連鎖健身品牌，深耕台灣各大住宅社區與捷運商圈。最大特色是「24小時全年無休 + 一支感應磁扣暢行全球超過5,000間分店」，環境單純溫馨、獨立衛浴完善。',
+                pricing: '月費約 $1,188～$1,488 元（視各加盟據點而定），無綁長年合約壓力，入會滿指定期數後自動享有全球跨店通行權限。',
+                audience: '輪班族與深夜/凌晨自主運動愛好者、住家附近不想跑遠的社區住戶、常出國旅遊或跨國出差的商務人士。',
+                highlights: ['#24小時全年無休', '#全球5000+分店磁扣通用', '#獨立乾濕分離衛浴', '#社區型高便利性'],
+                url: 'https://www.anytimefitness.com.tw',
+                bgImage: 'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=1920&q=85',
+                accentBtnClass: 'bg-purple-600 text-white',
+                borderColor: 'border-purple-600',
+                modalTheme: {
+                    headerClass: 'bg-gradient-to-r from-purple-950 via-purple-900 to-indigo-950 border-purple-400',
+                    badgeClass: 'bg-purple-500 text-white',
+                    enTextClass: 'text-purple-300',
+                    galleryLabelClass: 'text-purple-300',
+                    facilityTagClass: 'bg-purple-600 text-white',
+                    thumbActiveClass: 'border-purple-400 opacity-100 ring-2 ring-purple-400/50',
+                    overviewLabelClass: 'text-purple-700',
+                    tagChipClass: 'bg-purple-100 text-purple-900',
+                    iconClass: 'text-purple-600',
+                    officialBtnClass: 'bg-purple-700 hover:bg-purple-800 text-white',
+                    bookBtnClass: 'bg-purple-100 hover:bg-purple-200 text-purple-900 border-2 border-purple-600'
+                },
+                matchReason: '習慣深夜或凌晨運動、偏好離家近的社區型單純空間，或常出國出差需要全球跨店通行的你！',
+                facilities: [
+                    {
+                        tag: '全天候智慧門禁',
+                        title: '24H 全球感應門禁與安全監控系統',
+                        desc: '憑專屬紫色感應磁扣即可 24 小時全年無休自由進出台灣及全球超過 5,000 間分店，配備全天候安全監控與緊急求助按鈕。',
+                        enLabel: '24/7 GLOBAL ACCESS SECURITY',
+                        img: 'https://images.pexels.com/photos/3838389/pexels-photo-3838389.jpeg?auto=compress&cs=tinysrgb&w=1200'
+                    },
+                    {
+                        tag: '精選全能器械',
+                        title: '紫色系現代化重訓與深蹲架區',
+                        desc: '嚴選 Precor 與 Life Fitness 等商業級深蹲架、史密斯機、多功能纜繩機與有氧設備，動線精巧流暢、器材保養潔淨。',
+                        enLabel: 'MODERN RACKS & MACHINES',
+                        img: 'https://images.pexels.com/photos/3253501/pexels-photo-3253501.jpeg?auto=compress&cs=tinysrgb&w=1200'
+                    },
+                    {
+                        tag: '隱私衛浴空間',
+                        title: '獨立無障礙衛浴與個人置物空間',
+                        desc: '不同於傳統大澡堂，提供多間獨立上鎖的乾濕分離私人淋浴更衣室與開放式置物櫃，兼顧隱私性與居家般的潔淨舒適。',
+                        enLabel: 'PRIVATE SHOWER & LOCKERS',
+                        img: 'https://images.pexels.com/photos/6585757/pexels-photo-6585757.jpeg?auto=compress&cs=tinysrgb&w=1200'
+                    }
+                ]
+            }
+        };
+
+        // 1-1. 全站動態渲染引擎（主視覺切換器、快覽卡、深度介紹卡、規格比較表、下拉選單）
+        let currentHeroBrandKey = 'ff';
+        let currentCategoryFilter = 'all';
+
+        function renderHeroSwitcherButtons() {
+            const container = document.getElementById('hero-brand-switcher');
+            if (!container) return;
+            container.innerHTML = Object.keys(brandsCatalog).map(key => {
+                const b = brandsCatalog[key];
+                const isActive = key === currentHeroBrandKey;
+                const cls = isActive
+                    ? 'bg-brand-yellow text-brand-dark font-black shadow-md'
+                    : 'bg-white/10 hover:bg-white/20 text-white font-bold border border-white/15';
+                return `
+                    <button onclick="switchHeroBrand('${key}')" data-hero-btn="${key}" class="hero-switch-btn px-3.5 py-2 rounded-lg ${cls} text-xs sm:text-sm transition cursor-pointer">
+                        ${escapeHtml(b.shortName || b.name)}
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function renderHeroQuickCards() {
+            const grid = document.getElementById('hero-cards-grid');
+            if (!grid) return;
+            grid.innerHTML = Object.keys(brandsCatalog).map(key => {
+                const b = brandsCatalog[key];
+                return `
+                    <div class="bg-white/95 hover:bg-white backdrop-blur-md rounded-xl p-4 shadow-xl border-r border-gray-200 transition-all duration-200 hover:-translate-y-1 flex flex-col justify-between">
+                        <div>
+                            <div class="clip-tag bg-gradient-to-r ${b.quickCardGradient} text-xs font-black italic px-3 py-1 mb-2.5 tracking-wide">
+                                ${escapeHtml(b.tag)}
+                            </div>
+                            <div class="flex items-baseline justify-between gap-2">
+                                <h3 class="text-brand-dark font-black text-xl sm:text-2xl tracking-tight truncate">${escapeHtml(b.shortName || b.name)}</h3>
+                                <span class="font-display font-bold text-xs ${b.cardAccentText} shrink-0">${escapeHtml(b.quickStat)}</span>
+                            </div>
+                            <p class="text-gray-700 text-xs font-medium mt-1.5 leading-relaxed line-clamp-3">
+                                ${escapeHtml(b.desc)}
+                            </p>
+                        </div>
+                        <div class="mt-3.5 pt-2.5 border-t border-gray-200 flex items-center justify-between gap-2">
+                            <button onclick="openBrandDetailModal('${key}')" class="text-xs font-black text-brand-dark hover:opacity-75 transition flex items-center gap-1 cursor-pointer">
+                                <span>查看詳情與設施</span> <i class="fa-solid fa-images ${b.cardAccentText}"></i>
+                            </button>
+                            <a href="${b.url}" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg ${b.quickBtnClass} text-xs font-black flex items-center gap-1 transition">
+                                <span>前往官網</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function renderAllBrandCards() {
+            const container = document.getElementById('brands-cards-container');
+            if (!container) return;
+
+            const keys = Object.keys(brandsCatalog);
+            // 更新各分類數量統計
+            const counts = { all: keys.length, 'all-round': 0, hardcore: 0, '24h': 0, boutique: 0 };
+            keys.forEach(k => {
+                const cat = brandsCatalog[k].category || 'boutique';
+                if (counts[cat] !== undefined) counts[cat]++;
+            });
+            Object.keys(counts).forEach(cat => {
+                const el = document.getElementById(`brand-count-${cat}`);
+                if (el) el.textContent = counts[cat];
+            });
+
+            container.innerHTML = keys.map(key => {
+                const b = brandsCatalog[key];
+                const isHidden = currentCategoryFilter !== 'all' && b.category !== currentCategoryFilter ? 'hidden' : '';
+                const tagsHtml = b.highlights.map((h, i) => {
+                    const chipCls = i === 0 ? b.chipHighlightClass : 'bg-white border border-gray-200 text-gray-800';
+                    return `<span class="px-3 py-1 rounded-lg ${chipCls} text-xs font-black">${escapeHtml(h)}</span>`;
+                }).join('');
+
+                return `
+                    <article id="brand-card-${key}" data-category="${b.category}" class="brand-detail-card ${isHidden} bg-brand-gray rounded-3xl overflow-hidden border-2 border-gray-200 ${b.cardHoverBorder} shadow-sm hover:shadow-xl transition-all flex flex-col justify-between">
+                        <div>
+                            <div class="relative h-56 bg-brand-dark overflow-hidden">
+                                <img
+                                    src="${b.cardImage}"
+                                    onerror="this.onerror=null; this.src='https://placehold.co/1000x500/111111/F7D002?text=${encodeURIComponent(b.enName)}'"
+                                    alt="${escapeHtml(b.name)}"
+                                    class="w-full h-full object-cover opacity-75"
+                                >
+                                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent"></div>
+                                <div class="absolute top-4 left-4 flex items-center gap-2">
+                                    <span class="px-3 py-1 rounded-lg ${b.cardTagBg} font-black text-xs shadow">
+                                        ${escapeHtml(b.categoryName)}
+                                    </span>
+                                    <span class="px-3 py-1 rounded-lg bg-black/70 text-white font-bold text-xs backdrop-blur-xs">
+                                        ${escapeHtml(b.cardSubBadge)}
+                                    </span>
+                                </div>
+                                <div class="absolute bottom-4 left-6 right-6 flex items-end justify-between text-white">
+                                    <div>
+                                        <p class="font-display font-bold text-xs text-brand-yellow tracking-widest">${escapeHtml(b.enName)}</p>
+                                        <h3 class="text-2xl sm:text-3xl font-black">${escapeHtml(b.name)}</h3>
+                                    </div>
+                                    <span class="text-xs font-bold bg-white/15 backdrop-blur-md px-3 py-1.5 rounded-lg shrink-0">
+                                        ${escapeHtml(b.quickStat)}
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="p-6 sm:p-8 space-y-5">
+                                <p class="text-gray-700 text-sm sm:text-base leading-relaxed">
+                                    ${escapeHtml(b.desc)}
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    ${tagsHtml}
+                                </div>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                                    <div class="bg-white p-4 rounded-2xl border border-gray-200/80">
+                                        <p class="text-xs font-black ${b.cardAccentText} mb-1"><i class="fa-solid fa-users mr-1"></i>適合族群建議</p>
+                                        <p class="text-xs text-gray-700 font-medium leading-relaxed">${escapeHtml(b.audience)}</p>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-2xl border border-gray-200/80">
+                                        <p class="text-xs font-black text-brand-dark mb-1"><i class="fa-solid fa-file-invoice-dollar mr-1"></i>收費與合約特色</p>
+                                        <p class="text-xs text-gray-700 font-medium leading-relaxed">${escapeHtml(b.pricing)}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="px-6 sm:px-8 pb-6 sm:pb-8 pt-2 flex flex-wrap gap-2.5">
+                            <button onclick="openBrandDetailModal('${key}')" class="flex-1 min-w-[140px] py-3.5 px-4 rounded-xl bg-brand-yellow hover:bg-brand-bright text-brand-dark font-black text-sm text-center flex items-center justify-center gap-2 shadow-sm transition cursor-pointer">
+                                <i class="fa-solid fa-images"></i>
+                                <span>查看特點設施</span>
+                            </button>
+                            <a href="${b.url}" target="_blank" rel="noopener noreferrer" class="flex-1 min-w-[140px] py-3.5 px-4 rounded-xl ${b.officialBtnMainClass} font-black text-sm text-center flex items-center justify-center gap-2 shadow-md transition">
+                                <span>前往官方網站</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                            </a>
+                            <button onclick="openBookingModal('${escapeHtml(b.name)} 免費體驗')" class="w-full sm:w-auto py-3.5 px-4 rounded-xl bg-white border-2 border-brand-dark hover:bg-gray-100 text-brand-dark font-black text-sm transition cursor-pointer">
+                                預約體驗
+                            </button>
+                        </div>
+                    </article>
+                `;
+            }).join('');
+        }
+
+        function renderComparisonTable() {
+            const wrapper = document.getElementById('comparison-table-wrapper');
+            if (!wrapper) return;
+            const keys = Object.keys(brandsCatalog);
+
+            const headersHtml = keys.map((k, idx) => {
+                const b = brandsCatalog[k];
+                const highlightHead = idx === 0 ? 'bg-amber-500/20 text-brand-yellow border-x border-white/10' : '';
+                return `
+                    <th class="py-5 px-6 ${highlightHead}">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-brand-yellow"></span>
+                            <span>${escapeHtml(b.name)}</span>
+                        </div>
+                    </th>
+                `;
+            }).join('');
+
+            const rowsConfig = [
+                { label: '全台據點數量', field: 'tableLocations' },
+                { label: '月費價格透明度', field: 'tableTransparency' },
+                { label: '器材與自由重量規格', field: 'tableEquipment' },
+                { label: '團課與附加設施', field: 'tableFacilities' },
+                { label: '營業時間', field: 'tableHours' },
+                { label: '推銷風氣評價', field: 'tableSales' }
+            ];
+
+            const rowsHtml = rowsConfig.map(row => {
+                const cells = keys.map((k, idx) => {
+                    const b = brandsCatalog[k];
+                    const highlightCell = idx === 0 ? 'bg-amber-50/40 font-bold text-brand-dark border-x border-amber-200/50' : 'text-gray-700 font-medium';
+                    return `<td class="py-4 px-6 ${highlightCell}">${escapeHtml(b[row.field] || '依各分館現場公告')}</td>`;
+                }).join('');
+                return `
+                    <tr class="hover:bg-gray-50/80 transition">
+                        <td class="py-4 px-6 font-black text-brand-dark bg-gray-50/50">${row.label}</td>
+                        ${cells}
+                    </tr>
+                `;
+            }).join('');
+
+            const actionCells = keys.map((k, idx) => {
+                const b = brandsCatalog[k];
+                const highlightCell = idx === 0 ? 'bg-amber-50/60 border-x border-amber-200/50' : '';
+                return `
+                    <td class="py-4 px-6 ${highlightCell}">
+                        <div class="flex flex-wrap gap-2">
+                            <button onclick="openBrandDetailModal('${k}')" class="inline-flex items-center gap-1 px-3 py-2 rounded-lg bg-brand-yellow text-brand-dark font-black text-xs hover:bg-brand-bright transition cursor-pointer">
+                                <i class="fa-solid fa-images"></i>
+                                <span>設施圖庫</span>
+                            </button>
+                            <a href="${b.url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg ${b.officialBtnMainClass} font-black text-xs transition">
+                                <span>官網</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </td>
+                `;
+            }).join('');
+
+            wrapper.innerHTML = `
+                <table class="w-full text-left border-collapse min-w-[920px]">
+                    <thead>
+                        <tr class="bg-brand-dark text-white text-xs sm:text-sm font-black">
+                            <th class="py-5 px-6 w-44">比較維度</th>
+                            ${headersHtml}
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200 text-sm">
+                        ${rowsHtml}
+                        <tr class="bg-gray-50">
+                            <td class="py-4 px-6 font-black text-brand-dark">詳情與官網</td>
+                            ${actionCells}
+                        </tr>
+                    </tbody>
+                </table>
+            `;
+        }
+
+        function syncBrandSelectors() {
+            const keys = Object.keys(brandsCatalog);
+            // 同步「分享評論」下拉選單
+            const reviewSelect = document.getElementById('review-gym-select');
+            if (reviewSelect) {
+                const prevVal = reviewSelect.value;
+                reviewSelect.innerHTML = `<option value="" disabled ${prevVal ? '' : 'selected'}>請選擇健身房</option>` +
+                    keys.map(k => `<option value="${escapeHtml(brandsCatalog[k].name)}" ${prevVal === brandsCatalog[k].name ? 'selected' : ''}>${escapeHtml(brandsCatalog[k].name)}</option>`).join('');
+            }
+            // 同步「預約體驗」下拉選單
+            const bookingSelect = document.getElementById('booking-brand');
+            if (bookingSelect) {
+                bookingSelect.innerHTML = keys.map(k => `<option value="${escapeHtml(brandsCatalog[k].name)}">${escapeHtml(brandsCatalog[k].name)}</option>`).join('');
+            }
+            // 更新維護者專區統計徽章
+            const badge = document.getElementById('ai-total-gyms-badge');
+            if (badge) {
+                badge.textContent = `目前全站共 ${keys.length} 家健身房`;
+            }
+        }
+
+        // 2. Hero 主視覺即時切換品牌預覽
+        function switchHeroBrand(key) {
+            const data = brandsCatalog[key];
+            if (!data) return;
+            currentHeroBrandKey = key;
+            renderHeroSwitcherButtons();
+
+            // 平滑更新背景圖
+            const bgImg = document.getElementById('hero-bg-image');
+            if (bgImg) bgImg.src = data.bgImage;
+
+            // 更新左側品牌焦點框內容（加入「查看特點設施」按鈕）
+            const spotlight = document.getElementById('hero-brand-spotlight');
+            if (!spotlight) return;
+            spotlight.innerHTML = `
+                <div class="flex items-center justify-between gap-2">
+                    <span class="text-xs font-black text-brand-yellow tracking-wider">${data.tag}</span>
+                    <span class="text-[11px] text-gray-400 font-bold">品牌即時預覽</span>
+                </div>
+                <h2 class="text-white text-2xl sm:text-3xl font-black tracking-tight">${data.name}</h2>
+                <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">${data.desc}</p>
+                <div class="flex flex-wrap items-center gap-2.5 pt-2">
+                    <button onclick="openBrandDetailModal('${key}')" class="px-4 py-3 rounded-xl bg-brand-yellow hover:bg-brand-bright text-brand-dark font-black text-xs sm:text-sm tracking-wide shadow-lg transition transform hover:-translate-y-0.5 flex items-center gap-2 cursor-pointer">
+                        <i class="fa-solid fa-images"></i>
+                        <span>查看特點設施</span>
+                    </button>
+                    <a href="${data.url}" target="_blank" rel="noopener noreferrer" class="px-4 py-3 rounded-xl ${data.accentBtnClass} font-black text-xs sm:text-sm tracking-wide shadow-lg transition transform hover:-translate-y-0.5 flex items-center gap-2">
+                        <span>造訪官網</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                    </a>
+                    <button onclick="openBookingModal('${data.name} 免費體驗預約')" class="px-4 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/25 font-bold text-xs sm:text-sm transition flex items-center gap-2 cursor-pointer">
+                        <i class="fa-regular fa-calendar-check text-brand-yellow"></i>
+                        <span>預約體驗</span>
+                    </button>
+                </div>
+            `;
+        }
+
+        // 2-1. 品牌深度介紹與特點設施實景圖庫 Modal 控制邏輯
+        let currentDetailBrandKey = 'ff';
+        let currentFacilitySlideIdx = 0;
+
+        function openBrandDetailModal(brandKey) {
+            const brand = brandsCatalog[brandKey];
+            if (!brand) return;
+
+            currentDetailBrandKey = brandKey;
+            currentFacilitySlideIdx = 0;
+            const theme = brand.modalTheme;
+
+            // 套用各品牌專屬主題配色
+            const headerEl = document.getElementById('detail-modal-header');
+            headerEl.className = `${theme.headerClass} p-5 sm:p-6 text-white flex items-center justify-between border-b-4 transition-colors duration-300`;
+
+            const badgeEl = document.getElementById('detail-modal-badge');
+            badgeEl.className = `px-3 py-1 rounded-lg ${theme.badgeClass} font-black text-xs tracking-wider transition-colors duration-300`;
+            badgeEl.textContent = brand.categoryBadge;
+
+            const enEl = document.getElementById('detail-modal-en');
+            enEl.className = `font-display font-bold text-[11px] ${theme.enTextClass} tracking-widest uppercase transition-colors duration-300`;
+            enEl.textContent = brand.enName;
+
+            const galleryHeaderLabel = document.getElementById('gallery-header-label');
+            galleryHeaderLabel.className = `text-xs font-black ${theme.galleryLabelClass} tracking-wider flex items-center gap-1.5 transition-colors duration-300`;
+
+            const facilityTagEl = document.getElementById('gallery-facility-tag');
+            facilityTagEl.className = `inline-block px-2.5 py-0.5 rounded ${theme.facilityTagClass} font-black text-[11px] mb-1.5 transition-colors duration-300`;
+
+            const overviewLabelEl = document.getElementById('detail-modal-overview-label');
+            overviewLabelEl.className = `text-xs font-black ${theme.overviewLabelClass} uppercase tracking-wider transition-colors duration-300`;
+
+            document.getElementById('detail-modal-pricing-icon').className = `fa-solid fa-file-invoice-dollar ${theme.iconClass} transition-colors duration-300`;
+            document.getElementById('detail-modal-audience-icon').className = `fa-solid fa-user-check ${theme.iconClass} transition-colors duration-300`;
+
+            // 填入品牌標題與基本資訊
+            document.getElementById('detail-modal-title').textContent = brand.name;
+            document.getElementById('detail-modal-desc').textContent = brand.desc;
+            document.getElementById('detail-modal-pricing').textContent = brand.pricing;
+            document.getElementById('detail-modal-audience').textContent = brand.audience;
+
+            // 填入特色標籤（依品牌配色）
+            const tagsContainer = document.getElementById('detail-modal-tags');
+            tagsContainer.innerHTML = brand.highlights.map(tag => `
+                <span class="px-2.5 py-1 rounded-lg ${theme.tagChipClass} text-xs font-black">${tag}</span>
+            `).join('');
+
+            // 設定官網與預約按鈕動作及專屬色彩
+            const officialLink = document.getElementById('detail-modal-official-link');
+            officialLink.href = brand.url;
+            officialLink.className = `w-full py-3.5 px-5 rounded-xl ${theme.officialBtnClass} font-black text-sm text-center flex items-center justify-center gap-2 shadow-md transition`;
+
+            const bookBtn = document.getElementById('detail-modal-book-btn');
+            bookBtn.className = `w-full py-3.5 px-5 rounded-xl ${theme.bookBtnClass} font-black text-sm text-center transition shadow-xs cursor-pointer`;
+            bookBtn.onclick = function () {
+                closeBrandDetailModal();
+                openBookingModal(`${brand.name} 免費體驗預約`);
+            };
+
+            // 生成縮圖列並顯示第一張設施圖片
+            renderFacilityGalleryThumbs();
+            updateFacilitySlide(0);
+
+            // 顯示彈窗並鎖定背景捲動
+            const modal = document.getElementById('brand-detail-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBrandDetailModal() {
+            const modal = document.getElementById('brand-detail-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = '';
+        }
+
+        function renderFacilityGalleryThumbs() {
+            const brand = brandsCatalog[currentDetailBrandKey];
+            const thumbsRow = document.getElementById('gallery-thumbs-row');
+            thumbsRow.innerHTML = brand.facilities.map((item, idx) => `
+                <button onclick="updateFacilitySlide(${idx})" id="gallery-thumb-${idx}" class="gallery-thumb-btn group relative rounded-xl overflow-hidden aspect-[16/10] border-2 border-transparent opacity-60 hover:opacity-100 transition-all text-left cursor-pointer focus:outline-none">
+                    <img src="${item.img}" onerror="this.onerror=null; this.src='https://placehold.co/400x250/1E1E1E/F7D002?text=${encodeURIComponent(item.enLabel || 'FACILITY')}'" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
+                    <span class="absolute bottom-1.5 left-2 right-2 text-[11px] font-black text-white truncate">
+                        ${idx + 1}. ${item.title}
+                    </span>
+                </button>
+            `).join('');
+        }
+
+        function updateFacilitySlide(index) {
+            const brand = brandsCatalog[currentDetailBrandKey];
+            if (!brand || !brand.facilities.length) return;
+
+            const total = brand.facilities.length;
+            currentFacilitySlideIdx = (index + total) % total;
+            const facility = brand.facilities[currentFacilitySlideIdx];
+
+            const mainImg = document.getElementById('gallery-main-img');
+            mainImg.classList.add('opacity-40');
+            setTimeout(() => {
+                mainImg.onerror = function () {
+                    this.onerror = null;
+                    this.src = `https://placehold.co/1200x750/111111/F7D002?text=${encodeURIComponent(facility.enLabel || 'GYM FACILITY')}`;
+                };
+                mainImg.src = facility.img;
+                mainImg.classList.remove('opacity-40');
+            }, 120);
+
+            document.getElementById('gallery-counter').textContent = `${currentFacilitySlideIdx + 1} / ${total}`;
+            document.getElementById('gallery-facility-tag').textContent = facility.tag;
+            document.getElementById('gallery-facility-title').textContent = facility.title;
+            document.getElementById('gallery-facility-desc').textContent = facility.desc;
+
+            // 高亮當前縮圖（呼應品牌代表色邊框與光暈）
+            const activeClasses = brand.modalTheme.thumbActiveClass.split(' ');
+            document.querySelectorAll('.gallery-thumb-btn').forEach((btn, idx) => {
+                btn.className = 'gallery-thumb-btn group relative rounded-xl overflow-hidden aspect-[16/10] border-2 transition-all text-left cursor-pointer focus:outline-none';
+                if (idx === currentFacilitySlideIdx) {
+                    btn.classList.add(...activeClasses);
+                } else {
+                    btn.classList.add('border-transparent', 'opacity-60', 'hover:opacity-100');
+                }
+            });
+        }
+
+        function nextFacilitySlide() {
+            updateFacilitySlide(currentFacilitySlideIdx + 1);
+        }
+
+        function prevFacilitySlide() {
+            updateFacilitySlide(currentFacilitySlideIdx - 1);
+        }
+
+        // 鍵盤支援：ESC 關閉彈窗、左右方向鍵切換設施圖片
+        document.addEventListener('keydown', (e) => {
+            const detailModal = document.getElementById('brand-detail-modal');
+            const isDetailOpen = detailModal && !detailModal.classList.contains('hidden');
+            if (isDetailOpen) {
+                if (e.key === 'Escape') closeBrandDetailModal();
+                if (e.key === 'ArrowRight') nextFacilitySlide();
+                if (e.key === 'ArrowLeft') prevFacilitySlide();
+            } else if (e.key === 'Escape') {
+                closeBookingModal();
+            }
+        });
+
+        // 3. 品牌深度介紹區塊類型篩選
+        function filterBrandCards(category, btnEl) {
+            currentCategoryFilter = category;
+            document.querySelectorAll('.cat-filter-btn').forEach(btn => {
+                btn.classList.remove('bg-brand-dark', 'text-brand-yellow', 'font-black', 'shadow-sm');
+                btn.classList.add('bg-gray-100', 'text-gray-700', 'font-bold');
+            });
+            btnEl.classList.remove('bg-gray-100', 'text-gray-700', 'font-bold');
+            btnEl.classList.add('bg-brand-dark', 'text-brand-yellow', 'font-black', 'shadow-sm');
+
+            document.querySelectorAll('.brand-detail-card').forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+
+        // 4. 互動小測驗即時計算最佳推薦品牌
+        function calculateGymMatch() {
+            const resultBox = document.getElementById('quiz-result-box');
+            if (!resultBox) return;
+
+            const selectedGoal = document.querySelector('input[name="quiz-goal"]:checked')?.value || 'ff';
+            const selectedBudget = document.querySelector('input[name="quiz-budget"]:checked')?.value || 'transparent';
+
+            let matchedKey = selectedGoal;
+            // 若選擇跨區通行且目標為一般健身，強化推薦 Anytime Fitness 全球跨店
+            if (selectedBudget === 'flexible' && selectedGoal === 'ff') {
+                matchedKey = 'af';
+            }
+
+            const brand = brandsCatalog[matchedKey];
+            if (!brand) return;
+
+            resultBox.className = `bg-white text-brand-dark rounded-2xl p-6 sm:p-8 shadow-xl border-t-8 ${brand.borderColor} space-y-4 transition-all`;
+
+            resultBox.innerHTML = `
+                <div class="flex items-center justify-between">
+                    <span class="px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-black">
+                        <i class="fa-solid fa-trophy mr-1"></i>最適合你的推薦結果
+                    </span>
+                    <span class="font-display font-black text-xs text-gray-400">MATCH 98%</span>
+                </div>
+                <div>
+                    <h3 class="text-2xl sm:text-3xl font-black text-brand-dark">${brand.name}</h3>
+                    <p class="text-xs font-bold text-amber-600 mt-1">${brand.tag}</p>
+                </div>
+                <p class="text-sm text-gray-700 leading-relaxed bg-gray-50 p-4 rounded-xl border border-gray-200/80">
+                    <strong>推薦原因：</strong>${brand.matchReason}
+                </p>
+                <div class="flex flex-col sm:flex-row gap-2.5 pt-1">
+                    <button onclick="openBrandDetailModal('${matchedKey}')" class="flex-1 py-3 px-4 rounded-xl bg-brand-yellow text-brand-dark font-black text-xs sm:text-sm text-center flex items-center justify-center gap-1.5 hover:bg-brand-bright transition cursor-pointer">
+                        <i class="fa-solid fa-images"></i>
+                        <span>查看特點設施</span>
+                    </button>
+                    <a href="${brand.url}" target="_blank" rel="noopener noreferrer" class="flex-1 py-3 px-4 rounded-xl bg-brand-dark text-brand-yellow font-black text-xs sm:text-sm text-center flex items-center justify-center gap-1.5 hover:opacity-90 transition">
+                        <span>前往官網</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </div>
+            `;
+        }
+
+        // 5. 頂部搜尋列即時篩選品牌卡片
+        function searchBrandsRealtime() {
+            const kw = document.getElementById('global-search-input').value.trim().toLowerCase();
+            const cards = document.querySelectorAll('.brand-detail-card');
+            cards.forEach(card => {
+                if (!kw || card.innerText.toLowerCase().includes(kw)) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+            if (kw) {
+                document.getElementById('brands-directory').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // 6. 免費體驗預約 Modal 邏輯
+        function openBookingModal(title = '免費體驗與參觀預約') {
+            document.getElementById('booking-modal-title').textContent = title;
+            const select = document.getElementById('booking-brand');
+            for (let i = 0; i < select.options.length; i++) {
+                if (title.includes(select.options[i].value.split(' ')[0])) {
+                    select.selectedIndex = i;
+                    break;
+                }
+            }
+            const modal = document.getElementById('booking-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeBookingModal() {
+            const modal = document.getElementById('booking-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function submitBooking(e) {
+            e.preventDefault();
+            const brand = document.getElementById('booking-brand').value;
+            const city = document.getElementById('booking-city').value;
+            const name = document.getElementById('booking-name').value;
+            closeBookingModal();
+            document.getElementById('booking-form').reset();
+            showToast(`感謝 ${name}！已為您登記「${brand}（${city}）」免費體驗預約。`);
+        }
+
+        // 7. 側邊抽屜選單與搜尋列切換
+        function toggleDrawer() {
+            const drawer = document.getElementById('side-drawer');
+            const backdrop = document.getElementById('drawer-backdrop');
+            const isClosed = drawer.classList.contains('translate-x-full');
+
+            if (isClosed) {
+                backdrop.classList.remove('hidden');
+                setTimeout(() => backdrop.classList.remove('opacity-0'), 10);
+                drawer.classList.remove('translate-x-full');
+            } else {
+                drawer.classList.add('translate-x-full');
+                backdrop.classList.add('opacity-0');
+                setTimeout(() => backdrop.classList.add('hidden'), 300);
+            }
+        }
+
+        function toggleSearchBar() {
+            const bar = document.getElementById('quick-search-bar');
+            bar.classList.toggle('hidden');
+            if (!bar.classList.contains('hidden')) {
+                document.getElementById('global-search-input').focus();
+            }
+        }
+
+        // 8. 自訂 Toast 通知系統
+        function showToast(message) {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = 'bg-brand-dark text-white border-l-4 border-brand-yellow px-4 py-3 rounded-xl shadow-2xl text-xs sm:text-sm font-bold flex items-center gap-2.5 transform transition-all duration-300 translate-y-2 opacity-0';
+            toast.innerHTML = `<i class="fa-solid fa-circle-check text-brand-yellow"></i><span>${message}</span>`;
+            container.appendChild(toast);
+
+            requestAnimationFrame(() => {
+                toast.classList.remove('translate-y-2', 'opacity-0');
+            });
+
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-2');
+                setTimeout(() => toast.remove(), 300);
+            }, 3500);
+        }
+
+        // 9. 「分享評論」表單與即時評論牆功能
+        let gymReviewsData = [
+            {
+                gym: '健身工廠 Fitness Factory',
+                rating: 5,
+                comment: '月費價格全部公開透明，參觀時完全沒有強迫推銷！Hammer Strength 器材非常齊全，下班尖峰時段也不會等太久。',
+                author: '台中大雅小陳',
+                date: '2026/11/18'
+            },
+            {
+                gym: 'World Gym 世界健身俱樂部',
+                rating: 5,
+                comment: '超愛晚上的 BodyCombat 跟飛輪團課，老師帶動氣氛超嗨，練完還能去 SPA 水療池跟蒸氣室放鬆，CP值很高！',
+                author: '台北上班族 Ivy',
+                date: '2026/11/15'
+            },
+            {
+                gym: '成吉思汗健身俱樂部',
+                rating: 5,
+                comment: '深蹲架跟舉重台數量超多，槓片都是比賽級規格，自由重量玩家的天堂，週末偶爾還會去上拳擊有氧課。',
+                author: '硬舉破兩百阿凱',
+                date: '2026/11/12'
+            },
+            {
+                gym: 'Anytime Fitness 24H俱樂部',
+                rating: 4,
+                comment: '輪班工作半夜兩點下班也能刷磁扣進去練，獨立淋浴間很乾淨，出國去日本玩時也能直接刷同一顆磁扣進場超方便！',
+                author: '夜貓工程師 Leo',
+                date: '2026/11/09'
+            }
+        ];
+        let currentReviewFilter = 'all';
+
+        function updateReviewCharCount() {
+            const input = document.getElementById('review-comment-input');
+            const counter = document.getElementById('review-char-count');
+            if (input && counter) {
+                counter.textContent = `${input.value.length} / 500`;
+            }
+        }
+
+        function filterReviewsList(filterValue, btnEl) {
+            currentReviewFilter = filterValue;
+            document.querySelectorAll('.rev-filter-btn').forEach(btn => {
+                btn.classList.remove('bg-brand-dark', 'text-brand-yellow', 'font-black');
+                btn.classList.add('bg-gray-100', 'text-gray-700', 'font-bold');
+            });
+            if (btnEl) {
+                btnEl.classList.remove('bg-gray-100', 'text-gray-700', 'font-bold');
+                btnEl.classList.add('bg-brand-dark', 'text-brand-yellow', 'font-black');
+            }
+            renderReviewsList();
+        }
+
+        function renderReviewsList() {
+            const container = document.getElementById('reviews-list-container');
+            if (!container) return;
+
+            const filtered = currentReviewFilter === 'all'
+                ? gymReviewsData
+                : gymReviewsData.filter(item => item.gym === currentReviewFilter);
+
+            // 更新總數與平均星等統計
+            const avgEl = document.getElementById('reviews-avg-score');
+            const countEl = document.getElementById('reviews-count-num');
+            if (avgEl && countEl) {
+                const totalScore = filtered.reduce((sum, r) => sum + r.rating, 0);
+                const avg = filtered.length ? (totalScore / filtered.length).toFixed(1) : '0.0';
+                avgEl.textContent = avg;
+                countEl.textContent = filtered.length;
+            }
+
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-8 text-xs text-gray-400 font-bold bg-gray-50 rounded-2xl border border-dashed border-gray-200">
+                        目前此品牌尚無評論，歡迎成為第一位分享心得的健友！
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = filtered.map(item => {
+                const starsHtml = Array.from({ length: 5 }, (_, i) =>
+                    i < item.rating
+                        ? '<i class="fa-solid fa-star text-amber-400"></i>'
+                        : '<i class="fa-regular fa-star text-gray-300"></i>'
+                ).join('');
+
+                const safeComment = item.comment.trim()
+                    ? escapeHtml(item.comment)
+                    : '<span class="text-gray-400 italic">（此會員給予星等評價，未填寫文字心得）</span>';
+
+                return `
+                    <div class="p-4 rounded-2xl bg-brand-gray/70 border border-gray-200/80 space-y-2 transition hover:border-amber-400">
+                        <div class="flex items-center justify-between gap-2">
+                            <span class="px-2.5 py-0.5 rounded-md bg-brand-dark text-brand-yellow text-[11px] font-black">
+                                ${escapeHtml(item.gym)}
+                            </span>
+                            <div class="flex items-center gap-1 text-xs">
+                                ${starsHtml}
+                                <span class="font-black text-gray-700 ml-1">${item.rating}.0</span>
+                            </div>
+                        </div>
+                        <p class="text-xs sm:text-sm text-gray-800 leading-relaxed font-medium">
+                            ${safeComment}
+                        </p>
+                        <div class="flex items-center justify-between text-[11px] text-gray-500 pt-1">
+                            <span class="font-bold"><i class="fa-solid fa-user-circle mr-1 text-gray-400"></i>${escapeHtml(item.author)}</span>
+                            <span>${item.date}</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function escapeHtml(str) {
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        function submitGymReview(e) {
+            e.preventDefault();
+            const gymSelect = document.getElementById('review-gym-select');
+            const selectedGym = gymSelect.value;
+            if (!selectedGym) {
+                showToast('請先選擇要評論的健身房場館！');
+                return;
+            }
+
+            const ratingInput = document.querySelector('input[name="review-rating"]:checked');
+            const rating = ratingInput ? parseInt(ratingInput.value, 10) : 5;
+            const comment = document.getElementById('review-comment-input').value.trim();
+            const author = document.getElementById('review-author-input').value.trim() || '匿名健友';
+
+            const now = new Date();
+            const dateStr = `${now.getFullYear()}/${String(now.getMonth() + 1).padStart(2, '0')}/${String(now.getDate()).padStart(2, '0')}`;
+
+            gymReviewsData.unshift({
+                gym: selectedGym,
+                rating,
+                comment,
+                author,
+                date: dateStr
+            });
+
+            // 重設表單並切換至全部顯示最新評論
+            document.getElementById('gym-review-form').reset();
+            updateReviewCharCount();
+            const allBtn = document.querySelector('.rev-filter-btn');
+            filterReviewsList('all', allBtn);
+
+            showToast(`感謝 ${author} 的分享！已成功發布「${selectedGym}（${rating} 星）」評論。`);
+        }
+
+        // 10. 「健身轉盤」互動功能（SVG 扇形轉盤 + 隨機抽選 + 可抽選場館管理）
+        const roulettePoolState = [
+            { key: 'ff', label: '健身工廠', sub: '公開透明月費・頂級進口重訓', color: '#FDE68A', textColor: '#111111', enabled: true },
+            { key: 'wg', label: 'World Gym', sub: '全台120+據點・泳池SPA團課', color: '#FECACA', textColor: '#7F1D1D', enabled: true },
+            { key: 'gk', label: '成吉思汗', sub: '硬派健力重訓・MMA格鬥場', color: '#E5E7EB', textColor: '#111827', enabled: true },
+            { key: 'af', label: 'Anytime 24H', sub: '24H全年無休・全球通用磁扣', color: '#DDD6FE', textColor: '#4C1D95', enabled: true }
+        ];
+        let currentWheelRotation = 0;
+        let isWheelSpinning = false;
+
+        function getActiveRouletteItems() {
+            return roulettePoolState.filter(item => item.enabled);
+        }
+
+        function renderGymRouletteWheel() {
+            const wheelEl = document.getElementById('gym-roulette-wheel');
+            if (!wheelEl) return;
+
+            const activeItems = getActiveRouletteItems();
+            const count = activeItems.length;
+            const sliceAngle = 360 / count;
+            const radius = 160;
+            const cx = 160;
+            const cy = 160;
+
+            let pathsHtml = '';
+            let labelsHtml = '';
+
+            activeItems.forEach((item, idx) => {
+                // 從 12 點鐘方向 (-90度) 開始順時針繪製扇形
+                const startDeg = idx * sliceAngle - 90;
+                const endDeg = (idx + 1) * sliceAngle - 90;
+                const startRad = (startDeg * Math.PI) / 180;
+                const endRad = (endDeg * Math.PI) / 180;
+
+                const x1 = cx + radius * Math.cos(startRad);
+                const y1 = cy + radius * Math.sin(startRad);
+                const x2 = cx + radius * Math.cos(endRad);
+                const y2 = cy + radius * Math.sin(endRad);
+                const largeArcFlag = sliceAngle > 180 ? 1 : 0;
+
+                pathsHtml += `
+                    <path d="M ${cx} ${cy} L ${x1} ${y1} A ${radius} ${radius} 0 ${largeArcFlag} 1 ${x2} ${y2} Z"
+                          fill="${item.color}" stroke="#FFFFFF" stroke-width="2" />
+                `;
+
+                // 扇形中央文字角度
+                const midDeg = startDeg + sliceAngle / 2;
+                const midRad = (midDeg * Math.PI) / 180;
+                const textRadius = radius * 0.63;
+                const tx = cx + textRadius * Math.cos(midRad);
+                const ty = cy + textRadius * Math.sin(midRad);
+
+                labelsHtml += `
+                    <text x="${tx}" y="${ty}" fill="${item.textColor}" font-size="15" font-weight="900"
+                          text-anchor="middle" dominant-baseline="middle"
+                          transform="rotate(${midDeg + 90}, ${tx}, ${ty})">
+                        ${escapeHtml(item.label)}
+                    </text>
+                `;
+            });
+
+            wheelEl.innerHTML = `
+                <svg viewBox="0 0 320 320" class="w-full h-full block">
+                    ${pathsHtml}
+                    ${labelsHtml}
+                </svg>
+            `;
+        }
+
+        function renderRouletteCandidates() {
+            const gridEl = document.getElementById('roulette-candidates-grid');
+            const countSpan = document.getElementById('roulette-enabled-count');
+            const poolBadge = document.getElementById('roulette-pool-badge');
+            const activeCount = getActiveRouletteItems().length;
+
+            if (countSpan) countSpan.textContent = activeCount;
+            if (poolBadge) poolBadge.textContent = `可抽選：${activeCount} 家`;
+
+            if (!gridEl) return;
+
+            gridEl.innerHTML = roulettePoolState.map(item => {
+                const brand = brandsCatalog[item.key];
+                const cardOpacity = item.enabled ? 'bg-white border-gray-200 hover:border-amber-400' : 'bg-gray-100/70 border-gray-200 opacity-55';
+                const toggleBadge = item.enabled
+                    ? '<span class="px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-800 text-[11px] font-black"><i class="fa-solid fa-check mr-1"></i>已納入</span>'
+                    : '<span class="px-2 py-0.5 rounded-md bg-gray-200 text-gray-600 text-[11px] font-bold">已排除</span>';
+
+                return `
+                    <div class="rounded-2xl p-5 border ${cardOpacity} shadow-xs transition flex flex-col justify-between space-y-4">
+                        <div>
+                            <div class="flex items-start justify-between gap-2">
+                                <h4 class="text-base sm:text-lg font-black text-brand-dark">${escapeHtml(brand.name)}</h4>
+                                <button onclick="toggleRouletteCandidate('${item.key}')" title="切換是否加入轉盤抽選" class="cursor-pointer shrink-0">
+                                    ${toggleBadge}
+                                </button>
+                            </div>
+                            <p class="text-xs text-gray-500 font-medium mt-1">${escapeHtml(item.sub)}</p>
+                        </div>
+
+                        <div class="flex items-center gap-2 pt-1">
+                            <button onclick="openBrandDetailModal('${item.key}')" class="flex-1 py-2.5 px-3 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-black text-xs text-center transition cursor-pointer">
+                                查看場館與設施
+                            </button>
+                            <a href="${brand.url}" target="_blank" rel="noopener noreferrer" title="前往官方網站" class="py-2.5 px-3 rounded-xl bg-brand-dark hover:bg-brand-charcoal text-brand-yellow font-black text-xs transition">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function toggleRouletteCandidate(key) {
+            if (isWheelSpinning) {
+                showToast('轉盤正在旋轉中，請稍候再調整場館！');
+                return;
+            }
+            const target = roulettePoolState.find(item => item.key === key);
+            if (!target) return;
+
+            const activeCount = getActiveRouletteItems().length;
+            if (target.enabled && activeCount <= 2) {
+                showToast('轉盤至少需要保留 2 家健身房才能抽選喔！');
+                return;
+            }
+
+            target.enabled = !target.enabled;
+            renderGymRouletteWheel();
+            renderRouletteCandidates();
+
+            const newCount = getActiveRouletteItems().length;
+            const descEl = document.getElementById('roulette-result-desc');
+            const actionsEl = document.getElementById('roulette-result-actions');
+            if (descEl && actionsEl && actionsEl.classList.contains('hidden')) {
+                descEl.textContent = `從 ${newCount} 間健身房抽選，點「開始轉盤！」查看結果。`;
+            }
+        }
+
+        function spinGymRoulette() {
+            if (isWheelSpinning) return;
+
+            const activeItems = getActiveRouletteItems();
+            if (activeItems.length < 2) {
+                showToast('請至少勾選 2 家健身房再開始轉盤！');
+                return;
+            }
+
+            isWheelSpinning = true;
+            const spinBtn = document.getElementById('spin-roulette-btn');
+            const wheelEl = document.getElementById('gym-roulette-wheel');
+            const descEl = document.getElementById('roulette-result-desc');
+            const actionsEl = document.getElementById('roulette-result-actions');
+
+            if (spinBtn) {
+                spinBtn.disabled = true;
+                spinBtn.textContent = '轉盤旋轉中...';
+            }
+            if (actionsEl) actionsEl.classList.add('hidden');
+            if (descEl) {
+                descEl.innerHTML = `<span class="text-amber-600 font-black animate-pulse">正在為你隨機挑選今天最適合去運動的健身房...</span>`;
+            }
+
+            // 隨機決定中獎索引與最終停止角度（讓該扇形中央對準頂部 12 點鐘指針）
+            const count = activeItems.length;
+            const sliceAngle = 360 / count;
+            const winnerIndex = Math.floor(Math.random() * count);
+            const winnerItem = activeItems[winnerIndex];
+
+            // 扇形在未旋轉時的中心角度（相對於12點鐘方向順時針）
+            const sectorCenterFromTop = winnerIndex * sliceAngle + sliceAngle / 2;
+            // 在扇形範圍內加入些微隨機偏移（±30%扇形寬度），增加真實轉盤感
+            const jitter = (Math.random() - 0.5) * (sliceAngle * 0.5);
+            const targetModAngle = (360 - (sectorCenterFromTop + jitter) + 360) % 360;
+
+            const extraSpins = 360 * 6; // 多轉 6 圈
+            const currentMod = ((currentWheelRotation % 360) + 360) % 360;
+            const deltaAngle = (targetModAngle - currentMod + 360) % 360;
+            currentWheelRotation += extraSpins + deltaAngle;
+
+            if (wheelEl) {
+                wheelEl.style.transform = `rotate(${currentWheelRotation}deg)`;
+            }
+
+            // 等待 CSS 3.8 秒動畫結束後公布結果
+            setTimeout(() => {
+                isWheelSpinning = false;
+                if (spinBtn) {
+                    spinBtn.disabled = false;
+                    spinBtn.textContent = '再轉一次！';
+                }
+
+                const brand = brandsCatalog[winnerItem.key];
+                if (descEl) {
+                    descEl.innerHTML = `
+                        <div class="space-y-1.5">
+                            <span class="inline-block px-2.5 py-0.5 rounded bg-brand-yellow text-brand-dark text-xs font-black">
+                                今日運動推薦結果
+                            </span>
+                            <div class="text-2xl sm:text-3xl font-black text-brand-dark pt-0.5">
+                                ${escapeHtml(brand.name)}
+                            </div>
+                            <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                                ${escapeHtml(brand.desc)}
+                            </p>
+                        </div>
+                    `;
+                }
+
+                if (actionsEl) {
+                    actionsEl.classList.remove('hidden');
+                    actionsEl.innerHTML = `
+                        <button onclick="openBrandDetailModal('${winnerItem.key}')" class="px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-black text-xs sm:text-sm flex items-center gap-1.5 shadow-sm transition cursor-pointer">
+                            <i class="fa-solid fa-images"></i>
+                            <span>查看特點設施</span>
+                        </button>
+                        <a href="${brand.url}" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl bg-brand-dark hover:bg-brand-charcoal text-brand-yellow font-black text-xs sm:text-sm flex items-center gap-1.5 transition">
+                            <span>前往官方網站</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                        </a>
+                        <button onclick="openBookingModal('${brand.name} 免費體驗預約')" class="px-4 py-2.5 rounded-xl bg-gray-100 hover:bg-gray-200 text-brand-dark font-bold text-xs sm:text-sm transition cursor-pointer">
+                            預約免費體驗
+                        </button>
+                    `;
+                }
+
+                showToast(`轉盤結果出爐！今天推薦前往「${brand.name}」運動！`);
+            }, 3850);
+        }
+
+        // 11. 「維護者專區：AI 自動新增健身房」智慧建檔引擎
+        let aiAddedCount = 0;
+
+        function fillAiDemoGym(name, url) {
+            const nameInput = document.getElementById('ai-gym-name');
+            const urlInput = document.getElementById('ai-gym-url');
+            if (nameInput) nameInput.value = name;
+            if (urlInput) urlInput.value = url;
+            showToast(`已填入範例「${name}」，請點擊綠色按鈕讓 AI 自動整理！`);
+        }
+
+        function generateAiStructuredGymData(rawName, rawUrl) {
+            const lower = (rawName + ' ' + rawUrl).toLowerCase();
+            const shortName = rawName.split(/[\s（(]/)[0].slice(0, 14) || rawName;
+            const cleanUrl = rawUrl.startsWith('http') ? rawUrl : `https://${rawUrl}`;
+
+            // 智慧辨識場館屬性並自動生成完整結構與 3 組專屬設施實景圖庫
+            if (lower.includes('yoga') || lower.includes('瑜珈') || lower.includes('true') || lower.includes('全真')) {
+                return {
+                    name: rawName,
+                    shortName: shortName,
+                    enName: 'YOGA & WELLNESS STUDIO',
+                    category: 'boutique',
+                    categoryName: '精品瑜珈與身心會館',
+                    categoryBadge: '精品瑜珈會館・AI 智慧建檔',
+                    quickStat: '全方位身心課程',
+                    cardImage: 'https://images.pexels.com/photos/3822906/pexels-photo-3822906.jpeg?auto=compress&cs=tinysrgb&w=1000',
+                    cardTagBg: 'bg-teal-600 text-white',
+                    cardSubBadge: 'AI 自動整理收錄',
+                    cardHoverBorder: 'hover:border-teal-500',
+                    cardAccentText: 'text-teal-700',
+                    chipHighlightClass: 'bg-teal-100 text-teal-900',
+                    officialBtnMainClass: 'bg-teal-700 hover:bg-teal-800 text-white',
+                    quickCardGradient: 'from-[#0D9488] to-[#14B8A6] text-white',
+                    quickBtnClass: 'bg-teal-700 text-white hover:bg-teal-800',
+                    tableLocations: '都會核心商圈旗艦會館（捷運步行可達）',
+                    tableTransparency: '★★★★☆ 高（依課程堂數與會籍方案透明報價）',
+                    tableEquipment: '高溫熱瑜珈設備、空中瑜珈掛布、核心皮拉提斯床',
+                    tableFacilities: '恆溫熱瑜珈教室、飛輪有氧廳、蒸氣室與淋浴空間',
+                    tableHours: '每日 07:00-22:30（依各館課表時段開放）',
+                    tableSales: '低（提供單堂體驗與顧問課程規劃）',
+                    rouletteColor: '#99F6E4',
+                    rouletteTextColor: '#134E4A',
+                    tag: '專業熱瑜珈與身心平衡・多元化團體課程',
+                    desc: `${rawName} 主打國際認證瑜珈師資、熱瑜珈與多元有氧身心課程，結合寬敞靜謐的木質教室與重訓心肺設備，提供從基礎伸展、空中瑜珈到高強度雕塑的全方位健康體驗。`,
+                    pricing: '提供月費無限堂數方案、點數制課程包與單人體驗課程，可依個人每週上課頻率彈性選擇單館或跨館通行。',
+                    audience: '喜愛瑜珈、皮拉提斯、身體雕塑與舒壓伸展的上班族，以及重視教室質感與專業師資引導的運動族群。',
+                    highlights: ['#專業熱瑜珈教室', '#多元身心團課', '#質感木質空間', '#AI智慧建檔'],
+                    url: cleanUrl,
+                    bgImage: 'https://images.pexels.com/photos/3822906/pexels-photo-3822906.jpeg?auto=compress&cs=tinysrgb&w=1600',
+                    accentBtnClass: 'bg-teal-500 text-white',
+                    borderColor: 'border-teal-600',
+                    modalTheme: {
+                        headerClass: 'bg-gradient-to-r from-teal-950 via-teal-900 to-emerald-950 border-teal-400',
+                        badgeClass: 'bg-teal-500 text-white',
+                        enTextClass: 'text-teal-300',
+                        galleryLabelClass: 'text-teal-300',
+                        facilityTagClass: 'bg-teal-500 text-white',
+                        thumbActiveClass: 'border-teal-400 opacity-100 ring-2 ring-teal-400/50',
+                        overviewLabelClass: 'text-teal-700',
+                        tagChipClass: 'bg-teal-100 text-teal-900',
+                        iconClass: 'text-teal-600',
+                        officialBtnClass: 'bg-teal-700 hover:bg-teal-800 text-white',
+                        bookBtnClass: 'bg-teal-100 hover:bg-teal-200 text-teal-900 border-2 border-teal-600'
+                    },
+                    matchReason: '喜歡瑜珈伸展、核心雕塑與質感靜謐教室氛圍的你！',
+                    facilities: [
+                        {
+                            tag: '恆溫瑜珈殿堂',
+                            title: '專業恆溫熱瑜珈與空中瑜珈教室',
+                            desc: '配備智能溫濕度調節系統與防滑木質地板，提供哈達瑜珈、流動瑜珈、陰瑜珈與空中瑜珈等豐富課程。',
+                            enLabel: 'HEATED & AERIAL YOGA STUDIO',
+                            img: 'https://images.pexels.com/photos/3822906/pexels-photo-3822906.jpeg?auto=compress&cs=tinysrgb&w=1200'
+                        },
+                        {
+                            tag: '有氧雕塑空間',
+                            title: '多功能有氧與核心皮拉提斯訓練區',
+                            desc: '結合韻律有氧、核心肌群訓練與伸展輔助輔具，幫助提升身體柔軟度、核心穩定度與體態線條。',
+                            enLabel: 'PILATES & CORE SCULPTING',
+                            img: 'https://images.pexels.com/photos/4056723/pexels-photo-4056723.jpeg?auto=compress&cs=tinysrgb&w=1200'
+                        },
+                        {
+                            tag: '質感休憩衛浴',
+                            title: '飯店級更衣梳化間與舒壓休憩區',
+                            desc: '提供寬敞獨立淋浴空間、吹風機梳化台與靜謐休息沙發區，讓下課後的身心獲得完整放鬆。',
+                            enLabel: 'LOUNGE & LOCKER ROOM',
+                            img: 'https://images.pexels.com/photos/6585757/pexels-photo-6585757.jpeg?auto=compress&cs=tinysrgb&w=1200'
+                        }
+                    ]
+                };
+            }
+
+            if (lower.includes('24') || lower.includes('more') || lower.includes('fit') || lower.includes('摩爾')) {
+                return {
+                    name: rawName,
+                    shortName: shortName,
+                    enName: 'MODERN 24H FITNESS CLUB',
+                    category: '24h',
+                    categoryName: '24H社區便利型',
+                    categoryBadge: '24H智能健身場館・AI 智慧建檔',
+                    quickStat: '不綁長約・彈性月費',
+                    cardImage: 'https://images.pexels.com/photos/3253501/pexels-photo-3253501.jpeg?auto=compress&cs=tinysrgb&w=1000',
+                    cardTagBg: 'bg-sky-600 text-white',
+                    cardSubBadge: 'AI 自動整理收錄',
+                    cardHoverBorder: 'hover:border-sky-500',
+                    cardAccentText: 'text-sky-700',
+                    chipHighlightClass: 'bg-sky-100 text-sky-900',
+                    officialBtnMainClass: 'bg-sky-700 hover:bg-sky-800 text-white',
+                    quickCardGradient: 'from-[#0284C7] to-[#38BDF8] text-white',
+                    quickBtnClass: 'bg-sky-700 text-white hover:bg-sky-800',
+                    tableLocations: '都會捷運商圈與住宅社區據點',
+                    tableTransparency: '★★★★★ 極高（單月訂閱制・免綁長約）',
+                    tableEquipment: '進口自由重量深蹲架、多功能纜繩與有氧機',
+                    tableFacilities: '24H人臉/QRCode門禁、獨立淋浴間、單次入場',
+                    tableHours: '24 小時全天候智慧門禁開放',
+                    tableSales: '極低（全程自助線上訂閱・無業務推銷）',
+                    rouletteColor: '#BAE6FD',
+                    rouletteTextColor: '#0C4A6E',
+                    tag: '單月訂閱免綁約・24H智慧進場',
+                    desc: `${rawName} 主打「無綁長約、單月訂閱制與單次計費」的新世代智能健身空間，整合手機 QR Code 快速通關、頂級進口重訓器材與潔淨獨立衛浴，讓運動變得輕鬆無負擔。`,
+                    pricing: '支援單次分鐘計費、單月訂閱制（約 $999～$1,299 元/月）與無綁約彈性方案，官網即可直接線上開通會籍。',
+                    audience: '不喜歡被長年合約綁住的上班族、想隨時單次自主重訓的健身愛好者、重視空間潔淨度與免推銷體驗的新手。',
+                    highlights: ['#單月訂閱不綁約', '#支援單次入場', '#智慧QRCode門禁', '#AI智慧建檔'],
+                    url: cleanUrl,
+                    bgImage: 'https://images.pexels.com/photos/3253501/pexels-photo-3253501.jpeg?auto=compress&cs=tinysrgb&w=1600',
+                    accentBtnClass: 'bg-sky-500 text-white',
+                    borderColor: 'border-sky-600',
+                    modalTheme: {
+                        headerClass: 'bg-gradient-to-r from-sky-950 via-sky-900 to-slate-900 border-sky-400',
+                        badgeClass: 'bg-sky-500 text-white',
+                        enTextClass: 'text-sky-300',
+                        galleryLabelClass: 'text-sky-300',
+                        facilityTagClass: 'bg-sky-500 text-white',
+                        thumbActiveClass: 'border-sky-400 opacity-100 ring-2 ring-sky-400/50',
+                        overviewLabelClass: 'text-sky-700',
+                        tagChipClass: 'bg-sky-100 text-sky-900',
+                        iconClass: 'text-sky-600',
+                        officialBtnClass: 'bg-sky-700 hover:bg-sky-800 text-white',
+                        bookBtnClass: 'bg-sky-100 hover:bg-sky-200 text-sky-900 border-2 border-sky-600'
+                    },
+                    matchReason: '希望免綁長約、彈性單月訂閱並享受全天候自由進場的你！',
+                    facilities: [
+                        {
+                            tag: '現代重訓空間',
+                            title: '進口深蹲架與自由重量訓練區',
+                            desc: '配置商業級深蹲架、多功能史密斯機、完整啞鈴組與雙軌纜繩訓練機，動線明亮寬敞，自主訓練零壓力。',
+                            enLabel: 'MODERN FREE WEIGHT ZONE',
+                            img: 'https://images.pexels.com/photos/3253501/pexels-photo-3253501.jpeg?auto=compress&cs=tinysrgb&w=1200'
+                        },
+                        {
+                            tag: '智慧門禁系統',
+                            title: '手機 QR Code 快速通關與心肺有氧區',
+                            desc: '透過手機 App 一鍵掃碼進場，配備聯網跑步機、划船機與階梯機，即時追蹤每次訓練心率與卡路里消耗。',
+                            enLabel: 'SMART ACCESS & CARDIO',
+                            img: 'https://images.pexels.com/photos/3838389/pexels-photo-3838389.jpeg?auto=compress&cs=tinysrgb&w=1200'
+                        },
+                        {
+                            tag: '獨立衛浴設施',
+                            title: '乾濕分離獨立淋浴間與密碼置物櫃',
+                            desc: '提供多間獨立乾濕分離衛浴空間與電子密碼置物櫃，定時清潔消毒，下班或睡前運動都能安心梳洗。',
+                            enLabel: 'PRIVATE SHOWER & LOCKERS',
+                            img: 'https://images.pexels.com/photos/6585757/pexels-photo-6585757.jpeg?auto=compress&cs=tinysrgb&w=1200'
+                        }
+                    ]
+                };
+            }
+
+            // 預設通用精品/科學化重訓健身中心模板（如超核心等）
+            return {
+                name: rawName,
+                shortName: shortName,
+                enName: 'BOUTIQUE PERFORMANCE GYM',
+                category: 'boutique',
+                categoryName: '精品特色/AI新增',
+                categoryBadge: '科學化訓練場館・AI 智慧建檔',
+                quickStat: '科學化重訓與教練課',
+                cardImage: 'https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=1000',
+                cardTagBg: 'bg-emerald-600 text-white',
+                cardSubBadge: 'AI 自動整理收錄',
+                cardHoverBorder: 'hover:border-emerald-500',
+                cardAccentText: 'text-emerald-700',
+                chipHighlightClass: 'bg-emerald-100 text-emerald-900',
+                officialBtnMainClass: 'bg-emerald-700 hover:bg-emerald-800 text-white',
+                quickCardGradient: 'from-[#059669] to-[#10B981] text-white',
+                quickBtnClass: 'bg-emerald-700 text-white hover:bg-emerald-800',
+                tableLocations: '北中精華商圈旗艦館（持續拓展中）',
+                tableTransparency: '★★★★★ 極高（官網公開月費與教練課價格）',
+                tableEquipment: '歐美競技級舉重台、特殊角度重訓機械與草皮區',
+                tableFacilities: '肌力與體能訓練區、功能性草皮道、小班制團體課',
+                tableHours: '每日 07:00-24:00（依各分館公告為準）',
+                tableSales: '極低（價格透明、專注科學化訓練品質）',
+                rouletteColor: '#A7F3D0',
+                rouletteTextColor: '#064E3B',
+                tag: '科學化肌力訓練・歐美頂級特殊器械',
+                desc: `${rawName} 結合科學化運動表現與高質感工業風空間，引進罕見歐美特殊角度重訓機械、奧林匹克舉重台與專業人工草皮訓練區，提供高透明度自主訓練會籍與一對一專業教練指導。`,
+                pricing: '提供單月自主訓練會籍、多月優惠方案及透明化一對一教練課程，官網即可查詢完整價目表並線上預約參觀。',
+                audience: '重視動作生物力學與器械角度的進階重訓者、想系統化學習肌力與體能的初學者，以及喜愛高質感訓練環境的健友。',
+                highlights: ['#科學化肌力訓練', '#歐美特殊角度器械', '#價格公開透明', '#AI智慧建檔'],
+                url: cleanUrl,
+                bgImage: 'https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=1600',
+                accentBtnClass: 'bg-emerald-500 text-brand-dark',
+                borderColor: 'border-emerald-600',
+                modalTheme: {
+                    headerClass: 'bg-gradient-to-r from-emerald-950 via-emerald-900 to-zinc-900 border-emerald-400',
+                    badgeClass: 'bg-emerald-500 text-zinc-950',
+                    enTextClass: 'text-emerald-300',
+                    galleryLabelClass: 'text-emerald-300',
+                    facilityTagClass: 'bg-emerald-500 text-zinc-950',
+                    thumbActiveClass: 'border-emerald-400 opacity-100 ring-2 ring-emerald-400/50',
+                    overviewLabelClass: 'text-emerald-700',
+                    tagChipClass: 'bg-emerald-100 text-emerald-900',
+                    iconClass: 'text-emerald-600',
+                    officialBtnClass: 'bg-emerald-700 hover:bg-emerald-800 text-white',
+                    bookBtnClass: 'bg-emerald-100 hover:bg-emerald-200 text-emerald-950 border-2 border-emerald-600'
+                },
+                matchReason: '重視科學化肌力訓練、頂級特殊角度重訓器械與高質感訓練氛圍的你！',
+                facilities: [
+                    {
+                        tag: '肌力與自由重量',
+                        title: '奧林匹克舉重台與競技深蹲架區',
+                        desc: '配備減震競技舉重台、多座多功能深蹲架與完整大重量啞鈴組，滿足健力三項與爆發力專項訓練需求。',
+                        enLabel: 'OLYMPIC LIFTING & RACKS',
+                        img: 'https://images.pexels.com/photos/949126/pexels-photo-949126.jpeg?auto=compress&cs=tinysrgb&w=1200'
+                    },
+                    {
+                        tag: '進口特殊機械',
+                        title: '歐美生物力學特殊角度重訓器械區',
+                        desc: '嚴選多款符合人體工學與孤立肌群發力的進口掛片式器械，精準刺激胸、背、肩、臀腿各部位肌群。',
+                        enLabel: 'BIOMECHANICAL STRENGTH MACHINES',
+                        img: 'https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=1200'
+                    },
+                    {
+                        tag: '功能性體能區',
+                        title: '多功能人工草皮雪橇道與小班團課區',
+                        desc: '設有專業計量人工草皮衝刺道、戰繩、壺鈴與雪橇車，提供高強度間歇與運動表現提升訓練。',
+                        enLabel: 'FUNCTIONAL TURF & CONDITIONING',
+                        img: 'https://images.pexels.com/photos/3757954/pexels-photo-3757954.jpeg?auto=compress&cs=tinysrgb&w=1200'
+                    }
+                ]
+            };
+        }
+
+        function handleAiAddGym(e) {
+            e.preventDefault();
+            const nameInput = document.getElementById('ai-gym-name');
+            const urlInput = document.getElementById('ai-gym-url');
+            const rawName = nameInput.value.trim();
+            const rawUrl = urlInput.value.trim();
+
+            if (!rawName || !rawUrl) {
+                showToast('請完整輸入健身房名稱與官方網站網址！');
+                return;
+            }
+
+            // 檢查是否已存在同名品牌
+            const existingKey = Object.keys(brandsCatalog).find(
+                k => brandsCatalog[k].name.toLowerCase() === rawName.toLowerCase()
+            );
+            if (existingKey) {
+                showToast(`「${rawName}」已經在清單中囉！為您開啟特點設施頁面。`);
+                openBrandDetailModal(existingKey);
+                return;
+            }
+
+            const btn = document.getElementById('ai-generate-btn');
+            const progressBox = document.getElementById('ai-progress-box');
+            const progressBar = document.getElementById('ai-progress-bar');
+            const progressStatus = document.getElementById('ai-progress-status');
+            const progressPercent = document.getElementById('ai-progress-percent');
+            const progressDetail = document.getElementById('ai-progress-detail');
+
+            btn.disabled = true;
+            progressBox.classList.remove('hidden');
+
+            const steps = [
+                { pct: 30, status: 'AI 正在連線並解析官方網站結構...', detail: `讀取 ${rawUrl} 品牌定位、分館規模與方案資訊` },
+                { pct: 68, status: 'AI 正在歸納收費制度與特點設施...', detail: '生成 3 組代表性設施實景圖庫與專屬主題配色' },
+                { pct: 100, status: '整理完成！正在同步至全站與設施彈窗...', detail: '更新品牌卡片、比較表、轉盤與評論下拉選單' }
+            ];
+
+            let stepIdx = 0;
+            const runStep = () => {
+                if (stepIdx < steps.length) {
+                    const s = steps[stepIdx];
+                    progressBar.style.width = `${s.pct}%`;
+                    progressPercent.textContent = `${s.pct}%`;
+                    progressStatus.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin"></i><span>${s.status}</span>`;
+                    progressDetail.textContent = s.detail;
+                    stepIdx++;
+                    setTimeout(runStep, 450);
+                } else {
+                    // 建立新品牌資料並寫入全站狀態
+                    aiAddedCount++;
+                    const newKey = `ai_gym_${Date.now()}`;
+                    const structuredData = generateAiStructuredGymData(rawName, rawUrl);
+                    brandsCatalog[newKey] = structuredData;
+
+                    // 加入健身轉盤抽籤池
+                    roulettePoolState.push({
+                        key: newKey,
+                        label: structuredData.shortName,
+                        sub: structuredData.tag,
+                        color: structuredData.rouletteColor,
+                        textColor: structuredData.rouletteTextColor,
+                        enabled: true
+                    });
+
+                    // 重新渲染全站所有連動區塊
+                    renderHeroSwitcherButtons();
+                    renderHeroQuickCards();
+                    renderAllBrandCards();
+                    renderComparisonTable();
+                    syncBrandSelectors();
+                    renderGymRouletteWheel();
+                    renderRouletteCandidates();
+
+                    // 更新右側 AI 整理結果預覽卡
+                    const previewContent = document.getElementById('ai-preview-content');
+                    if (previewContent) {
+                        previewContent.innerHTML = `
+                            <div class="p-4 rounded-2xl bg-black/50 border border-emerald-400/40 space-y-3">
+                                <div class="flex items-center justify-between gap-2">
+                                    <span class="px-2.5 py-0.5 rounded bg-emerald-400 text-brand-dark text-xs font-black">
+                                        已成功收錄至全站
+                                    </span>
+                                    <span class="text-xs text-gray-400 font-bold">${escapeHtml(structuredData.categoryName)}</span>
+                                </div>
+                                <h4 class="text-xl font-black text-white">${escapeHtml(structuredData.name)}</h4>
+                                <p class="text-xs text-gray-300 leading-relaxed">${escapeHtml(structuredData.desc)}</p>
+                                <div class="text-xs text-emerald-300 font-bold">
+                                    已自動建立 ${structuredData.facilities.length} 組特點設施實景圖庫與專屬主題彈窗
+                                </div>
+                                <div class="flex flex-wrap gap-2 pt-1">
+                                    <button onclick="openBrandDetailModal('${newKey}')" class="px-4 py-2.5 rounded-xl bg-brand-yellow hover:bg-brand-bright text-brand-dark font-black text-xs flex items-center gap-1.5 shadow transition cursor-pointer">
+                                        <i class="fa-solid fa-images"></i>
+                                        <span>立即查看詳情與設施頁面</span>
+                                    </button>
+                                    <a href="#brand-card-${newKey}" class="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition">
+                                        前往品牌介紹卡片
+                                    </a>
+                                </div>
+                            </div>
+                        `;
+                    }
+
+                    // 加入本次新增場館快捷清單
+                    const addedListBox = document.getElementById('ai-added-list-box');
+                    const addedList = document.getElementById('ai-added-list');
+                    if (addedListBox && addedList) {
+                        addedListBox.classList.remove('hidden');
+                        addedList.insertAdjacentHTML('afterbegin', `
+                            <div class="flex items-center justify-between gap-2 p-3 rounded-xl bg-black/40 border border-white/10">
+                                <div class="min-w-0">
+                                    <p class="text-xs font-black text-white truncate">${escapeHtml(structuredData.name)}</p>
+                                    <p class="text-[11px] text-gray-400 truncate">${escapeHtml(structuredData.url)}</p>
+                                </div>
+                                <button onclick="openBrandDetailModal('${newKey}')" class="px-3 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-brand-dark font-black text-xs shrink-0 transition cursor-pointer">
+                                    看設施頁面
+                                </button>
+                            </div>
+                        `);
+                    }
+
+                    progressStatus.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-400"></i><span>AI 已完成「${escapeHtml(rawName)}」建檔並同步全站！</span>`;
+                    btn.disabled = false;
+                    nameInput.value = '';
+                    urlInput.value = '';
+                    showToast(`AI 已將「${rawName}」整理完成並同步至健身房介紹與設施頁面！`);
+                }
+            };
+
+            runStep();
+        }
+
+        // 12. 「BMI 體態測量與運動建議」計算引擎
+        function calculateUserBMI(e) {
+            if (e) e.preventDefault();
+
+            const heightInput = document.getElementById('bmi-height');
+            const weightInput = document.getElementById('bmi-weight');
+            if (!heightInput || !weightInput) return;
+
+            const heightCm = parseFloat(heightInput.value);
+            const weightKg = parseFloat(weightInput.value);
+
+            if (!heightCm || !weightKg || heightCm < 100 || heightCm > 250 || weightKg < 25 || weightKg > 300) {
+                if (e) showToast('請輸入有效的身高（100～250 cm）與體重（25～300 kg）！');
+                return;
+            }
+
+            const heightM = heightCm / 100;
+            const bmi = weightKg / (heightM * heightM);
+            const bmiFixed = bmi.toFixed(1);
+
+            const minIdeal = (18.5 * heightM * heightM).toFixed(1);
+            const maxIdeal = (24.0 * heightM * heightM).toFixed(1);
+
+            const scoreEl = document.getElementById('bmi-score-value');
+            const idealEl = document.getElementById('bmi-ideal-range');
+            const diffEl = document.getElementById('bmi-weight-diff');
+            const badgeEl = document.getElementById('bmi-status-badge');
+            const pointerEl = document.getElementById('bmi-pointer');
+            const adviceEl = document.getElementById('bmi-training-advice');
+            const recGymLabel = document.getElementById('bmi-rec-gym-label');
+            const recFacilityBtn = document.getElementById('bmi-rec-facility-btn');
+            const recBookBtn = document.getElementById('bmi-rec-book-btn');
+
+            if (scoreEl) scoreEl.textContent = bmiFixed;
+            if (idealEl) idealEl.textContent = `${minIdeal} ～ ${maxIdeal}`;
+
+            let statusText = '';
+            let badgeClass = '';
+            let diffText = '';
+            let diffClass = '';
+            let adviceText = '';
+            let recBrandKey = 'ff';
+            let pointerPercent = 50;
+
+            if (bmi < 18.5) {
+                statusText = '體重過輕（建議增肌）';
+                badgeClass = 'px-4 py-1.5 rounded-full bg-sky-500 text-white font-black text-xs sm:text-sm shadow';
+                const gainNeeded = (parseFloat(minIdeal) - weightKg).toFixed(1);
+                diffText = `距離健康體重下限還差約 ${gainNeeded} kg，適合搭配高蛋白飲食與漸進式重訓增肌！`;
+                diffClass = 'text-[11px] text-sky-300 font-bold mt-1';
+                adviceText = '建議以「自由重量與機械式肌力訓練」為主、減少過度長時間有氧，每週 3～4 次全身大肌群訓練（深蹲、臥推、划船），搭配充足熱量與蛋白質攝取。';
+                recBrandKey = brandsCatalog.gk ? 'gk' : 'ff';
+                pointerPercent = Math.max(6, Math.min(24, ((bmi - 14) / 4.5) * 25));
+            } else if (bmi < 24) {
+                statusText = '健康體位（標準）';
+                badgeClass = 'px-4 py-1.5 rounded-full bg-emerald-500 text-white font-black text-xs sm:text-sm shadow';
+                diffText = '目前體重落在理想健康區間內，可進一步透過 InBody 檢測肌肉與體脂比例！';
+                diffClass = 'text-[11px] text-emerald-300 font-bold mt-1';
+                adviceText = '你的體重非常標準！建議採取「70% 阻力重訓＋30% 心肺有氧」的黃金比例，雕塑緊實肌肉線條並維持高效基礎代謝。';
+                recBrandKey = 'ff';
+                pointerPercent = 25 + ((bmi - 18.5) / 5.5) * 25;
+            } else if (bmi < 27) {
+                statusText = '體重過重（建議減脂塑形）';
+                badgeClass = 'px-4 py-1.5 rounded-full bg-amber-500 text-brand-dark font-black text-xs sm:text-sm shadow';
+                const loseNeeded = (weightKg - parseFloat(maxIdeal)).toFixed(1);
+                diffText = `距離健康體重上限約超出 ${loseNeeded} kg，每週規律運動 3～4 次即可穩健達標！`;
+                diffClass = 'text-[11px] text-amber-300 font-bold mt-1';
+                adviceText = '建議將「大肌群複合式重訓」結合「有氧團課（如飛輪、BodyCombat 或快走坡度訓練）」，既能燃燒熱量又能避免減重後皮膚鬆弛。';
+                recBrandKey = brandsCatalog.wg ? 'wg' : 'ff';
+                pointerPercent = 50 + ((bmi - 24) / 3.0) * 25;
+            } else {
+                statusText = '肥胖範圍（建議低衝擊燃脂）';
+                badgeClass = 'px-4 py-1.5 rounded-full bg-red-600 text-white font-black text-xs sm:text-sm shadow';
+                const loseNeeded = (weightKg - parseFloat(maxIdeal)).toFixed(1);
+                diffText = `距離健康體重上限約超出 ${loseNeeded} kg，建議從保護關節的低衝擊有氧與基礎肌力開始！`;
+                diffClass = 'text-[11px] text-red-300 font-bold mt-1';
+                adviceText = '初期建議選擇「低衝擊心肺訓練」（如室內游泳、滑步機、飛輪或水中運動）降低膝蓋負擔，並循序加入坐姿機械式重訓提升代謝。';
+                recBrandKey = brandsCatalog.wg ? 'wg' : 'ff';
+                pointerPercent = Math.min(95, 75 + ((bmi - 27) / 8.0) * 25);
+            }
+
+            if (badgeEl) {
+                badgeEl.textContent = statusText;
+                badgeEl.className = badgeClass;
+            }
+            if (diffEl) {
+                diffEl.textContent = diffText;
+                diffEl.className = diffClass;
+            }
+            if (adviceEl) adviceEl.textContent = adviceText;
+            if (pointerEl) pointerEl.style.left = `${pointerPercent}%`;
+
+            const recBrand = brandsCatalog[recBrandKey] || brandsCatalog.ff;
+            if (recGymLabel) recGymLabel.textContent = `推薦場館：${recBrand.name}`;
+            if (recFacilityBtn) {
+                recFacilityBtn.onclick = () => openBrandDetailModal(recBrandKey);
+            }
+            if (recBookBtn) {
+                recBookBtn.onclick = () => openBookingModal(`${recBrand.name} 免費InBody檢測`);
+            }
+
+            if (e) {
+                showToast(`BMI 測量完成：${bmiFixed}（${statusText}）`);
+            }
+        }
+
+        function resetBMICalculator() {
+            const heightInput = document.getElementById('bmi-height');
+            const weightInput = document.getElementById('bmi-weight');
+            if (heightInput) heightInput.value = 172;
+            if (weightInput) weightInput.value = 68;
+            calculateUserBMI();
+            showToast('已重設為預設身高體重數值。');
+        }
+
+        // 13. 「新用戶刮刮樂」Canvas 刮獎與折價券領取引擎
+        const scratchCouponsPool = [
+            {
+                badge: '頭獎・NEW MEMBER VIP',
+                brandTag: '全連鎖品牌通用',
+                subtitle: '恭喜刮出新用戶最高禮遇',
+                title: '免入會費折抵券 $1,500',
+                desc: '憑券預約參觀並申辦任一全時段會籍，現場直接折抵入會手續費 $1,500 元。',
+                code: 'GYMNEW1500',
+                targetBrand: '健身工廠 Fitness Factory 免費體驗'
+            },
+            {
+                badge: '二獎・14 DAYS PASS',
+                brandTag: '大型全能會館適用',
+                subtitle: '恭喜獲得兩週完整運動通行證',
+                title: '14 天全時段免費體驗券',
+                desc: '不限平假日與尖峰時段，連續 14 天免費暢享頂級重訓區、有氧設備與團體課程。',
+                code: 'TRY14DAYS',
+                targetBrand: 'World Gym 世界健身俱樂部 免費體驗'
+            },
+            {
+                badge: '三獎・COACH + INBODY',
+                brandTag: '專業教練指導禮遇',
+                subtitle: '恭喜獲得一對一專屬體態規劃',
+                title: '教練體驗課＋InBody 檢測券',
+                desc: '免費享有完整身體組成分析與 60 分鐘一對一私人教練動作指導（市價 $1,800）。',
+                code: 'PTFREE2026',
+                targetBrand: '成吉思汗健身俱樂部 免費體驗'
+            },
+            {
+                badge: '幸運獎・FIRST MONTH OFF',
+                brandTag: '24H 社區便利型適用',
+                subtitle: '恭喜獲得新會員首月會籍補助金',
+                title: '首月月費現折 $500 折價券',
+                desc: '新申辦月費制會籍首月立減 $500 元，24 小時全年無休隨時開啟運動習慣。',
+                code: 'FIT500OFF',
+                targetBrand: 'Anytime Fitness 24H俱樂部 免費體驗'
+            }
+        ];
+
+        let currentScratchPrize = scratchCouponsPool[0];
+        let isScratching = false;
+        let isScratchRevealed = false;
+
+        function initScratchCard() {
+            const canvas = document.getElementById('scratch-canvas');
+            const wrapper = document.getElementById('scratch-card-wrapper');
+            if (!canvas || !wrapper) return;
+
+            isScratchRevealed = false;
+            isScratching = false;
+
+            // 隨機抽取一張折價券寫入底層 DOM
+            currentScratchPrize = scratchCouponsPool[Math.floor(Math.random() * scratchCouponsPool.length)];
+            document.getElementById('prize-badge').textContent = currentScratchPrize.badge;
+            document.getElementById('prize-brand-tag').textContent = currentScratchPrize.brandTag;
+            document.getElementById('prize-subtitle').textContent = currentScratchPrize.subtitle;
+            document.getElementById('prize-title').textContent = currentScratchPrize.title;
+            document.getElementById('prize-desc').textContent = currentScratchPrize.desc;
+            document.getElementById('prize-code').textContent = currentScratchPrize.code;
+
+            // 重設右側狀態與進度文字
+            const progressText = document.getElementById('scratch-progress-text');
+            if (progressText) progressText.textContent = '已刮開 0%';
+            const statusPill = document.getElementById('scratch-status-pill');
+            if (statusPill) {
+                statusPill.textContent = '尚未刮開';
+                statusPill.className = 'px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-black';
+            }
+            const statusDesc = document.getElementById('scratch-status-desc');
+            if (statusDesc) {
+                statusDesc.textContent = '每位新用戶皆可免費試手氣！刮開左側銀漆塗層後，即可解鎖專屬優惠碼並直接套用至免費體驗預約。';
+            }
+            const claimActions = document.getElementById('scratch-claim-actions');
+            if (claimActions) claimActions.classList.add('hidden');
+
+            // 設定 Canvas 尺寸並繪製金屬質感銀漆塗層
+            const rect = wrapper.getBoundingClientRect();
+            const width = Math.max(300, Math.floor(rect.width || 520));
+            const height = Math.max(170, Math.floor(rect.height || 292));
+            canvas.width = width;
+            canvas.height = height;
+            canvas.classList.remove('opacity-0', 'pointer-events-none');
+
+            const ctx = canvas.getContext('2d');
+            ctx.globalCompositeOperation = 'source-over';
+
+            // 金屬銀灰漸層底色
+            const grad = ctx.createLinearGradient(0, 0, width, height);
+            grad.addColorStop(0, '#D1D5DB');
+            grad.addColorStop(0.35, '#9CA3AF');
+            grad.addColorStop(0.7, '#E5E7EB');
+            grad.addColorStop(1, '#6B7280');
+            ctx.fillStyle = grad;
+            ctx.fillRect(0, 0, width, height);
+
+            // 斜紋裝飾線條
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.22)';
+            ctx.lineWidth = 2;
+            for (let i = -height; i < width + height; i += 24) {
+                ctx.beginPath();
+                ctx.moveTo(i, 0);
+                ctx.lineTo(i + height, height);
+                ctx.stroke();
+            }
+
+            // 中央提示文字
+            ctx.fillStyle = '#111111';
+            ctx.font = '900 22px "Noto Sans TC", sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('新用戶專屬・刮開領折價券', width / 2, height / 2 - 12);
+
+            ctx.fillStyle = '#374151';
+            ctx.font = '700 13px "Montserrat", "Noto Sans TC", sans-serif';
+            ctx.fillText('SCRATCH HERE TO WIN GYM VOUCHER', width / 2, height / 2 + 18);
+        }
+
+        function bindScratchEvents() {
+            const canvas = document.getElementById('scratch-canvas');
+            if (!canvas) return;
+
+            const getPos = (e) => {
+                const rect = canvas.getBoundingClientRect();
+                const scaleX = canvas.width / rect.width;
+                const scaleY = canvas.height / rect.height;
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                return {
+                    x: (clientX - rect.left) * scaleX,
+                    y: (clientY - rect.top) * scaleY
+                };
+            };
+
+            const scratchAt = (x, y) => {
+                if (isScratchRevealed) return;
+                const ctx = canvas.getContext('2d');
+                ctx.globalCompositeOperation = 'destination-out';
+                ctx.beginPath();
+                ctx.arc(x, y, 26, 0, Math.PI * 2);
+                ctx.fill();
+                checkScratchPercentage();
+            };
+
+            canvas.addEventListener('mousedown', (e) => {
+                isScratching = true;
+                const pos = getPos(e);
+                scratchAt(pos.x, pos.y);
+            });
+            window.addEventListener('mouseup', () => {
+                isScratching = false;
+            });
+            canvas.addEventListener('mousemove', (e) => {
+                if (!isScratching) return;
+                const pos = getPos(e);
+                scratchAt(pos.x, pos.y);
+            });
+
+            canvas.addEventListener('touchstart', (e) => {
+                isScratching = true;
+                const pos = getPos(e);
+                scratchAt(pos.x, pos.y);
+            }, { passive: true });
+            canvas.addEventListener('touchend', () => {
+                isScratching = false;
+            });
+            canvas.addEventListener('touchmove', (e) => {
+                if (!isScratching) return;
+                const pos = getPos(e);
+                scratchAt(pos.x, pos.y);
+            }, { passive: true });
+        }
+
+        function checkScratchPercentage() {
+            if (isScratchRevealed) return;
+            const canvas = document.getElementById('scratch-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+            let transparentPixels = 0;
+            const totalSampled = imageData.length / 16; // 每 4 個像素取樣 1 次提升效能
+
+            for (let i = 3; i < imageData.length; i += 16) {
+                if (imageData[i] < 128) transparentPixels++;
+            }
+
+            const percent = Math.min(100, Math.round((transparentPixels / totalSampled) * 100));
+            const progressText = document.getElementById('scratch-progress-text');
+            if (progressText) progressText.textContent = `已刮開 ${percent}%`;
+
+            if (percent >= 45) {
+                revealAllScratchCard();
+            }
+        }
+
+        function revealAllScratchCard() {
+            if (isScratchRevealed) return;
+            isScratchRevealed = true;
+
+            const canvas = document.getElementById('scratch-canvas');
+            if (canvas) {
+                canvas.classList.add('opacity-0', 'pointer-events-none');
+            }
+            const progressText = document.getElementById('scratch-progress-text');
+            if (progressText) progressText.textContent = '已刮開 100%';
+
+            const statusPill = document.getElementById('scratch-status-pill');
+            if (statusPill) {
+                statusPill.textContent = '已成功中獎！';
+                statusPill.className = 'px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-black';
+            }
+            const statusDesc = document.getElementById('scratch-status-desc');
+            if (statusDesc) {
+                statusDesc.innerHTML = `恭喜獲得 <strong class="text-brand-dark">${escapeHtml(currentScratchPrize.title)}</strong>！優惠碼 <span class="px-2 py-0.5 rounded bg-brand-yellow text-brand-dark font-display font-black">${escapeHtml(currentScratchPrize.code)}</span> 已生效，可立即套用預約。`;
+            }
+            const claimActions = document.getElementById('scratch-claim-actions');
+            if (claimActions) claimActions.classList.remove('hidden');
+
+            showToast(`恭喜刮出「${currentScratchPrize.title}」（優惠碼：${currentScratchPrize.code}）！`);
+        }
+
+        function resetScratchCard() {
+            initScratchCard();
+            showToast('已為您換上一張全新的新用戶刮刮卡！');
+        }
+
+        function copyScratchCouponCode() {
+            const code = currentScratchPrize.code;
+            const tempInput = document.createElement('input');
+            tempInput.value = code;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            showToast(`已複製折價券序號「${code}」！`);
+        }
+
+        function applyCouponToBooking() {
+            openBookingModal(`${currentScratchPrize.targetBrand}（已套用優惠碼：${currentScratchPrize.code}）`);
+        }
+
+        // 初始化頁面
+        window.addEventListener('DOMContentLoaded', () => {
+            renderHeroSwitcherButtons();
+            renderHeroQuickCards();
+            renderAllBrandCards();
+            renderComparisonTable();
+            syncBrandSelectors();
+            switchHeroBrand('ff');
+            calculateGymMatch();
+            renderReviewsList();
+            renderGymRouletteWheel();
+            renderRouletteCandidates();
+            calculateUserBMI();
+            initScratchCard();
+            bindScratchEvents();
+        });
+    </script>
+</body>
+</html>
